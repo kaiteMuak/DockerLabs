@@ -1,1 +1,4 @@
-## PingCTF - Writeup
+# PingCTF - Writeup
+
+## Resumen
+Esta maquina
