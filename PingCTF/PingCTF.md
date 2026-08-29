@@ -19,3 +19,6 @@ Al entrar, podemos ver que la web se compone unicamente de un buscador, por lo q
 ![Shell injection](images/img2.png)
 
 Logrando asi obtener una reverse shell.
+
+##Paso N3: Explotacion de binarios SUID
+
