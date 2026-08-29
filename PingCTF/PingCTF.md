@@ -9,6 +9,7 @@ Usamos nmap para el reconociminento basico de puertos TCP para escanear sus dete
 nmap 172.17.0.2 -sS -sVC -n -Pn -p- --open --min-rate 5000 
 ```
 ![TCP scan](images/img1.png)
+
 Esta abierto unicamente el puerto 80, por lo que habra que investigar la pagina para buscar una vulnerabilidad.
 
 ## Paso N2: Visualizacion web e inyeccion 
