@@ -21,10 +21,17 @@ Al entrar, podemos ver que la web se compone unicamente de un buscador, por lo q
 
 Logrando asi obtener una reverse shell.
 
-## Paso N3: Explotacion de binarios SUID
+## Paso N3: Busqueda de binarios para escalar privilegios
 Una vez ya dentro de la maquina ejecutamos ```sudo -l``` y nos devuelve ```bash: sudo: command not found``` lo que directamente nos dice que sudo no es ejecutable en este sistema, por lo que pasamos a buscar binarios SUID vulnerables.
 ```
 find / -perm -4000 2>/dev/null
 ```
-![SUID](images/img3.png)
+![SUID Search](images/img3.png)
+
+## Paso N4: Explotacion de binarios SUID
+Podemos observar que esta integrado el binario vulnerable ```/usr/bin/vim.basic``` por lo que pasamos a explotarlo con el siguiente comando
+```
+
+```
+![SUID explotation](images/img3.png)
 
