@@ -2,7 +2,7 @@
 
 ## Resumen
 PingCTF es una maquina de categoria 'facil' que nos presenta una pagina web vulnerable a OS Command Injection con binarios SUID vulnerables dentro de la maquina para escalar privilegios.
-
+![PingCTF](images/img0.png)
 
 ## Paso N1: Reconocimiento
 Usamos nmap para el reconociminento basico de puertos TCP para escanear sus determinados servicios y versiones.
