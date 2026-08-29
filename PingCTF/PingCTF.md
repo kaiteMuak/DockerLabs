@@ -8,6 +8,6 @@ Usamos nmap para el reconociminento basico de puertos TCP para escanear sus dete
 ```
 nmap 172.17.0.2 -sS -sVC -n -Pn -p- --open --min-rate 5000 
 ```
-![Ping test](images/img1.png)
+(images/img1.png)
 
 
