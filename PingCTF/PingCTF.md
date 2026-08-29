@@ -20,5 +20,10 @@ Al entrar, podemos ver que la web se compone unicamente de un buscador, por lo q
 
 Logrando asi obtener una reverse shell.
 
-##Paso N3: Explotacion de binarios SUID
+## Paso N3: Explotacion de binarios SUID
+Una vez ya dentro de la maquina ejecutamos ```sudo -l``` y nos devuelve ```bash: sudo: command not found``` lo que directamente nos dice que sudo no es ejecutable en este sistema, por lo que pasamos a buscar binarios SUID vulnerables.
+```
+find / -perm -4000 -type f 2>/dev/null
+```
+![SUID](images/img3.png)
 
