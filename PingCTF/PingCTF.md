@@ -1,7 +1,8 @@
 # PingCTF - Writeup
 
 ## Resumen
-Esta maquina
+PingCTF es una maquina de categoria 'facil' que nos presenta una pagina web vulnerable a OS Command Injection con binarios SUID vulnerables dentro de la maquina para escalar privilegios.
+
 
 ## Paso N1: Reconocimiento
 Usamos nmap para el reconociminento basico de puertos TCP para escanear sus determinados servicios y versiones.
@@ -31,7 +32,7 @@ find / -perm -4000 2>/dev/null
 ## Paso N4: Explotacion de binarios SUID
 Podemos observar que esta integrado el binario vulnerable ```/usr/bin/vim.basic``` por lo que pasamos a explotarlo con el siguiente comando
 ```
-
+vim.basic -c ':py3 import os; os.setuid(0); os.execl("/bin/sh", "sh", "-pc", "reset; exec sh -p")'
 ```
-![SUID explotation](images/img3.png)
+Una vez ejecutado, seremos usuarios root.
 
