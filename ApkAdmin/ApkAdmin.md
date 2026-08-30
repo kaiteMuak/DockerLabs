@@ -43,4 +43,4 @@ ssh pingu@172.17.0.2
 ```
 Una vez dentro del usuario pingu, ejecutamos el comando ```sudo -l``` y nos devuelve ```-bash: sudo: command not found``` lo que nos dice que sudo no es ejecutables.
 
-intentamos ejecutar ```su root``` y usamos las credenciales que encontramos analizando el apk y se ejecuta correctamente, por lo que nos convertimos en usuarios root.
+intentamos ejecutar ```su root``` y reutilizamos las credenciales que encontramos analizando el apk para entrar en el servidor ssh (una mala practica de seguridad comun) y se ejecuta correctamente, por lo que nos convertimos en usuarios root.
