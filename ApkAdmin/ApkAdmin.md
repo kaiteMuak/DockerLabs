@@ -28,11 +28,11 @@ Luego de descargarla, entraremos a sus archivoos internos usando
 ```
 jadx-gui AdminBypassCTF.apk
 ```
-![jadx-gui](images/img3)
+![jadx-gui](images/img3.png)
 Una vez dentro de la interfaz grafica de jadx, podremos ver en la parte de la izquierda todos sus archivos internos y explorar dentro de ellos para buscar las credenciales del ssh.
 
 Como no sabemos en cual archivo se encuentra, usaré la herrmienta de busqueda que se encuentra en el menu de arriba a la derecha y filtrare por palabras claves. En este caso, contrasena y nos muestra un resultado
-![jadx-gui search](images/img4)
+![jadx-gui search](images/img4.png)
 
 Ahora, ya sabemos que el usuario es pingu y la contraseña es chocolate para acceder al servidor ssh.
 
