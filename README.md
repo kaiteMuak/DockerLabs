@@ -1,4 +1,4 @@
 # DockerLabs
 
 ## Easy Tier
-/PingCTF 
+1. [PingCTF](/PingCTF) - 2 weeks
