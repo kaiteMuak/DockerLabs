@@ -9,13 +9,13 @@ Usamos la herramienta nmap para buscar puertos TCP abiertos y a la vez escanear 
 ```
 nmap 172.17.0.2 -sS -sVC -n -Pn -p- --open --min-rate 5000 
 ```
-![scan](/images/img1.png)
+![scan](images/img1.png)
 
 Podemos ver que tiene unicamente el puerto TCP 80 (http) y 22 (ssh) abiertos, por los que procederemos a buscar informacion dentro del servidor web.
 
 ## Paso N2: Visualizacion web
 Al entrar a la pagina, podemos ver que nos da un boton para descargar un archivo apk.
-![web](/images/img2.png)
+![web](images/img2.png)
 
 Una vez descargado, podremos analizar sus archivos internos mediante la herramienta ```jadx```
 
@@ -28,11 +28,11 @@ Luego de descargarla, entraremos a sus archivoos internos usando
 ```
 jadx-gui AdminBypassCTF.apk
 ```
-![jadx-gui](/images/img3)
+![jadx-gui](images/img3)
 Una vez dentro de la interfaz grafica de jadx, podremos ver en la parte de la izquierda todos sus archivos internos y explorar dentro de ellos para buscar las credenciales del ssh.
 
 Como no sabemos en cual archivo se encuentra, usaré la herrmienta de busqueda que se encuentra en el menu de arriba a la derecha y filtrare por palabras claves. En este caso, contrasena y nos muestra un resultado
-![jadx-gui search](/images/img4)
+![jadx-gui search](images/img4)
 
 Ahora, ya sabemos que el usuario es pingu y la contraseña es chocolate para acceder al servidor ssh.
 
