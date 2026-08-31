@@ -74,7 +74,7 @@ Una vez ejecutado, accederemos al usuario hannah.
 
 ## Paso N7: Escalando privilegios
 Una vez estando en el usuario hannah, investigando los directorios principales nos daremos cuenta que en la carpeta /opt hay un archivo llamado priv-python el cual el dueño es root con grupo hannah y tenemos permiso de lectura y ejecución.
-![priv-python](images/img4)
+![priv-python](images/img4.png)
 
 Verificamos si el archivo tiene capabilities con el siguiente comando:
 ```
