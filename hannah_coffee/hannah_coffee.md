@@ -8,7 +8,7 @@ empezamos escaneando la maquina para detectar los puertos TCP y sus determinados
 ```
 nmap 172.17.0.2 -sS -sVC -n -Pn -p- --open --min-rate 5000
 ```
-![scan](img)
+![nmap](images/img1.png)
 Podemos ver que estan abiertos los puertos TCP 80 y 21, por lo que procederemos a investigar la web.
 
 ## Paso N2: Busqueda de parametros vulnerables
