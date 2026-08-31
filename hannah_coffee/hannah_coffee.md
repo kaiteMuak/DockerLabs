@@ -2,7 +2,7 @@
 
 ## Resumen
 Esta máquina nos presenta multiples problemas a los cuales tendremos que darle solucion. Empezaremos fuzzeando parametros para poder lograr un Local File Inclusion (LFI) para poder acceder a los logs del servicio ftp y poder inyectar codigo php los cuales se reflejaran en los logs mediante una sesion ftp (FTP Log Poisoning) para asi poder ejecutar comandos en el navegador y lograr una reverse shell. Una vez dentro, accederemos a usuarios y escalaremos privilegios con capabilities.
-[hannah_coffee](images/img0(1).jpeg)
+[hannah_coffee](images/img0.jpeg)
 
 ## Paso N1: Escaneo de puertos TCP
 empezamos escaneando la maquina para detectar los puertos TCP y sus determinados servicios y versiones.
