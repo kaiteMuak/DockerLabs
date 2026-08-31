@@ -70,7 +70,13 @@ sudo -u hannah /sbin/debugfs -w /opt/hannah_disk.img
 ```
 Una vez ejecutado, accederemos al usuario hannah.
 
-## Paso N7: 
+## Paso N7: Escalando privilegios
+Una vez estando en el usuario hannah, investigando los directorios principarles nos daremos cuenta que en la carpeta /opt hay un archivo llamado priv-python el cual el dueño es root, con grupo hannah y tenemos permiso de lectura y ejecucion.
+
+Verificamos si el archivo tiene capabilities con el siguiente comando 
+```
+getcap /opt/priv-python
+```
 
 
 
