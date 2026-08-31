@@ -77,6 +77,10 @@ Verificamos si el archivo tiene capabilities con el siguiente comando
 ```
 getcap /opt/priv-python
 ```
+![getcap](img)
+vemos que nos devuelve ```cap_setuid=ep```. Las capabilities son permisos especificos, en este caso, la capability ```cap_setuid=ep``` le da a este binario el permiso especifico de cambiar su UID a cualquier valor.
+
+
 
 
 
