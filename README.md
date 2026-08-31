@@ -3,4 +3,4 @@
 ## Easy Tier
 1. [PingCTF](/PingCTF/PingCTF.md) - OS Command Injection | SUID Binaries
 2. [ApkAdmin](/ApkAdmin/ApkAdmin.md) - APK Reverse Engineering | SSH | Credential Reuse
-3. [hannah_coffee](/hannah_coffee/hannah_coffee.md) - LFI | FTP Log Poisoning | Capabilities
+3. [hannah_coffee](/hannah_coffee/hannah_coffee.md) - Parameter Fuzzing | LFI | FTP Log Poisoning | Capabilities
