@@ -2,7 +2,7 @@
 
 ## Resumen
 ApkAdmin nos presenta una maquina con el objetivo de descargar un archivo .apk para posteriormente analizarlo y buscar el usuario y la contraseña para acceder al servidor ssh y luego convertirnos en usuarios root reutilizando credenciales.
-![imagen](x)
+![ApkAdmin](images/img0(2).jpeg)
 
 ## Paso N1: Reconocimiento
 Usamos la herramienta nmap para buscar puertos TCP abiertos y a la vez escanear sus versiones y servicios determinados.
