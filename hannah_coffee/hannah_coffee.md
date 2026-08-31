@@ -79,21 +79,20 @@ getcap /opt/priv-python
 ```
 ![getcap](img)
 vemos que nos devuelve ```cap_setuid=ep```. Las capabilities son permisos especificos, en este caso, la capability ```cap_setuid=ep``` le da a este binario el permiso especifico de cambiar su UID a cualquier valor.
+Por lo que si ejecutamos el siguiente comando:
+```
+/opt/priv-python -c 'import os; os.setuid(0); os.system("/bin/sh")'
+```
+Nos convertiremos en usuarios root
+Este comando indica que queremos usar herramientas de configuracion a nivel de sistema operativo ```import.os;```, cambiandonos nuestro uid a cero (uid 0 = root) ```os.setuid(0);``` y abriendo una nueva bash luego de usar el intreprete de python ```os.system("/bin/sh")```
+![py](img)
 
 
 
 
 
 
-Raw Text 
-escaneamos
-fuzzeamos parametro vulnerable
 
-http://172.17.0.2/index.php?studio=/var/log/vsftpd.log
-
-usamos comandos 
-
-Raw Command
 
 
 
