@@ -46,4 +46,10 @@ Por intuición, supe que era un cifrado ROT13, por lo que procedo a descifrarlo 
 ```
 
 ## Paso N5: Accediendo a usuarios
-Una vez ya teniendo la contraseña de uno de los pasantes, volvemos a la pagina inicial luego del login, y buscando por la columna de departamento encontramos dos pasantes, **Pedro Ramirez** y **Valentina Gomez**, por lo que ahora probaremos la contraseña con los dos usuarios que tenemos en el servidor ssh 
+Una vez ya teniendo la contraseña de uno de los pasantes, volvemos a la pagina inicial luego del login, y buscando por la columna de departamento encontramos dos pasantes, **Pedro Ramirez** y **Valentina Gomez**, por lo que ahora probaremos la contraseña con los dos usuarios que tenemos en el servidor ssh.
+
+Lo intento con el usuario Pedro con ```ssh pedro@172.17.0.2```  y accedemos al usuario correcto.
+
+No podemos correr ```sudo -l``` y tampoco hay binarios SUID vulnerables, por lo que podemos empezar a buscar archivos vulnerables.
+En el directorio /opt hay un archivo llamado ```log_cleaner.sh``` de grupo valentina y usuario valentina y tenemos permisos para leerlo, ejecutarlo y editarlo, por lo que lo configuramos para que nos haga una reverse shell.
+En una terminal ejecutamos ```nc -lvnp 443``` y en el usuario de pedro, configuraremos el archivo con ```nano``` de esta manera:
