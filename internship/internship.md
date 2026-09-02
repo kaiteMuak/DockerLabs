@@ -23,8 +23,8 @@ Por lo que ahora, configuraremos ```/etc/hosts``` para acceder a la página, de 
 172.17.0.2 gatekeeperhr.com
 ```
 
-## SQL Injection
+## Paso N3: SQL Injection
 Ahora sí, una vez dentro de la página, podremos acceder a una pestaña de loggin, en la cuál pide un usuario y una contraseña, por lo que intentamos hacer una SQLi de la siguiente manera:
 ![]()
 
-```' OR 1=1 -- -``` funciona de la siguiente manera: ```'``` sirve para cerrar la cadena de texto donde se encuentra el input, ```OR 1=1``` se usa como un condicional, para que devuelva TRUE, haciendo que la condicion se cumpla sin importar los datos reales, ```-- -``` los primero dos guíones sirven para comentar el resto de la línea, el espacio y guíon restante sirve de relleno para asegurar que la inyeccińn se ejecute correctamente
+```' OR 1=1 -- -``` funciona de la siguiente manera: ```'``` sirve para cerrar la cadena de texto donde se encuentra el input, ```OR 1=1``` se usa como un condicional, para que devuelva TRUE, haciendo que la condicion se cumpla sin importar los datos reales, ```-- -``` los primero dos guíones sirven para comentar el resto de la línea, el espacio y guíon restante sirve de relleno para asegurar que la inyeccińn se ejecute correctamente.
