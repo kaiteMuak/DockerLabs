@@ -36,4 +36,11 @@ Al acceder a la página, tenemos una lista con las columnas: id, nombre, departa
 ```
 ![]()
 
-Y encontramos el subdirectorio /spam, que al hacerle un ```curl``` (o en su defecto entrar e inspeccionar la página) encontraremos un comentario.
+Y encontramos el subdirectorio /spam, que al hacerle un ```curl``` (o en su defecto entrar e inspeccionar la página) encontraremos un comentario:
+```
+<!-- Yn pbagenfrñn qr hab qr ybf cnfnagrf rf 'checy3' -->
+```
+Por intuición, supe que era un cifrado ROT13, por lo que procedo a descifrarlo de manero online y queda el siguiente texto
+```
+<!-- La contraseña de uno de los pasantes es 'purpl3' -->
+```
