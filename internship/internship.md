@@ -22,3 +22,9 @@ Por lo que ahora, configuraremos ```/etc/hosts``` para acceder a la página, de 
 ```
 172.17.0.2 gatekeeperhr.com
 ```
+
+## SQL Injection
+Ahora sí, una vez dentro de la página, podremos acceder a una pestaña de loggin, en la cuál pide un usuario y una contraseña, por lo que intentamos hacer una SQLi de la siguiente manera:
+![]()
+
+```' OR 1=1 -- -
