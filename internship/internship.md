@@ -29,7 +29,7 @@ Ahora sí, una vez dentro de la página, podremos acceder a una pestaña de logg
 
 ```' OR 1=1 -- -``` funciona de la siguiente manera: ```'``` sirve para cerrar la cadena de texto donde se encuentra el input, ```OR 1=1``` se usa como un condicional, para que devuelva TRUE, haciendo que la condicion se cumpla sin importar los datos reales, ```-- -``` los primero dos guíones sirven para comentar el resto de la línea, el espacio y guíon restante sirve de relleno para asegurar que la inyección se ejecute correctamente, por lo que ahora tenemos acceso a la página.
 
-## Paso N4: Accediendo a usuarios
+## Paso N4: Buscando subdirectorios
 Al acceder a la página, tenemos una lista con las columnas: id, nombre, departamento y fecha de inicio. No tenemos alguna idea de que hacer con eso, por lo que buscamos diferentes directorios para buscar mas información con gobuster
 ```
  gobuster dir -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt -u http://gatekeeperhr.com/
@@ -40,7 +40,10 @@ Y encontramos el subdirectorio /spam, que al hacerle un ```curl``` (o en su defe
 ```
 <!-- Yn pbagenfrñn qr hab qr ybf cnfnagrf rf 'checy3' -->
 ```
-Por intuición, supe que era un cifrado ROT13, por lo que procedo a descifrarlo de manero online y queda el siguiente texto
+Por intuición, supe que era un cifrado ROT13, por lo que procedo a descifrarlo de manera online y queda el siguiente texto
 ```
 <!-- La contraseña de uno de los pasantes es 'purpl3' -->
 ```
+
+## Paso N5: Accediendo a usuarios
+Una vez ya teniendo la contraseña de uno de los pasantes, volvemos a la pagina inicial luego del login, y buscando por la columna de departamento encontramos dos pasantes, **Pedro Ramirez** y **Valentina Gomez**, por lo que ahora probaremos la contraseña con los dos usuarios que tenemos en el servidor ssh 
