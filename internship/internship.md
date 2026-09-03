@@ -8,7 +8,7 @@ Empezamos escaneando los puertos TCP de la máquina con el siguiente comando:
 ```
 nmap 172.17.0.2 -sS -sVC -n -Pn -p- --open --min-rate 5000
 ```
-![scan](x)
+![nmap](images/img1.png)
 Podemos ver que están los puertos 22 y 80 abiertos, no tenemos las credenciales correspondientes al ssh, por lo que tocará investigar el servidor web.
 
 ## Paso N2: Investigación
