@@ -2,6 +2,7 @@
 
 ## Resumen 
 Esta máquina presenta una vulnerabilidad de SQL Injection que aprovechamos para bypasear el login, donde encontramos una pista cifrada en ROT13 con la contraseña de un pasante. Usamos esa contraseña para acceder a un usuario del servidor SSH, y luego abusamos de un script con permisos de escritura vulnerables para pivotar a otro usuario. Finalmente, mediante la extracción de información oculta en un archivo JPEG (esteganografía), obtuvimos la contraseña para escalar privilegios a root. 
+
 ![summary](images/img0(3).jpeg)
 
 ## Paso N1: Reconocimiento 
@@ -40,6 +41,7 @@ Al acceder a la página, tenemos una lista con las columnas: id, nombre, departa
  gobuster dir -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt -u http://gatekeeperhr.com/
 ```
 Y encontramos el subdirectorio /spam, que al hacerle un ```curl``` (o en su defecto entrar e inspeccionar la página) encontraremos un comentario:
+
 ![html comment](images/img5.png)
 ```
 <!-- Yn pbagenfrñn qr hab qr ybf cnfnagrf rf 'checy3' -->
