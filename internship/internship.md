@@ -1,7 +1,7 @@
 # internship - Writeup
 
 ## Resumen 
-Esta máquina presenta una vulnerabilidad de SQL Injection que aprovechamos para bypasear el login, donde encontramos una pista cifrada en ROT13 con la contraseña de un pasante. Usamos esa contraseña para acceder a un usuario del servidor SSH, y luego abusamos de un script con permisos de escritura vulnerables para pivotar a otro usuario. Finalmente, mediante la extracción de información oculta en un archivo JPEG (esteganografía), obtuvimos la contraseña para escalar privilegios a root.
+Esta máquina presenta una vulnerabilidad de SQL Injection que aprovechamos para bypasear el login, donde encontramos una pista cifrada en ROT13 con la contraseña de un pasante. Usamos esa contraseña para acceder a un usuario del servidor SSH, y luego abusamos de un script con permisos de escritura vulnerables para pivotar a otro usuario. Finalmente, mediante la extracción de información oculta en un archivo JPEG (esteganografía), obtuvimos la contraseña para escalar privilegios a root. 
 ![summary](images/img0(3).jpeg)
 
 ## Paso N1: Reconocimiento 
