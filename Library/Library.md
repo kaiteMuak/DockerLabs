@@ -33,14 +33,14 @@ hydra -L /usr/share/seclists/Usernames/xato-net-10-million-usernames.txt -p JIFG
 ```
 ![]()
 
-Y encontramos que el usuario es carlos. por lo que ahora podemos acceder con las credenciales completas al ssh ```ssh pedro@172.17.0.2```
+Y encontramos que el usuario es carlos. por lo que ahora podemos acceder con las credenciales completas al ssh ```ssh carlos@172.17.0.2```
 ![]()
 
 ## Paso N4: Python Librarie Hijacking
 Al hacer ```sudo -l``` encontramos la ruta ```(ALL) NOPASSWD: /usr/bin/python3 /opt/script.py``` la cuál, nos dice  que podemos ejecutar servicio sudo en la ruta ```/usr/bin/python3``` y en la ruta ```/opt``` hay un archivo python ejecutable el cual contiene este script:
 ![]()
 
-Podemos ver que el script corre ```import shutil``` sin la direccion completa y exacta el recurso (es decir, sin ruta absoluta), por lo que podemos abusar de ello usando un Python Librarie Hijacking.
+Podemos ver que el script corre ```import shutil``` sin la direccion completa y exacta del recurso (es decir, sin ruta absoluta), por lo que podemos abusar de ello usando un Python Librarie Hijacking.
 
 Para esto, crearemos un archivo llamado ```shutil.py``` y haremos que ejecute el siguiente comando:
 ```
