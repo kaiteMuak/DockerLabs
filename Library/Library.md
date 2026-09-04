@@ -46,7 +46,11 @@ Para esto, crearemos un archivo llamado ```shutil.py``` y haremos que ejecute el
 ```
 echo 'import os; os.system("/bin/bash")' > /opt/shutil.py
 ```
-Python Librarie Hijacking, consiste en una vulnerabilidad la cuál podemos aprovechar una declaracion ```import``` sin ruta absoluta, para correr un script propio con nombre de
+![]()
+
+Python Librarie Hijacking, consiste en una vulnerabilidad la cuál podemos aprovechar una declaracion ```import``` sin ruta absoluta, para correr un script propio con nombre el nombre de la declaracion import.
+
+En este caso, podemos ver que ```script.py``` corre ```import shutil``` sin ruta absoluta, por lo que, podemos crear un archivo de nombre ```shutil``` el cuál se ejecutara. Python Librarie Hijacking primero buscará el recurso en el mismo directorio en el cual se hospeda el script, en este caso, en ```/opt``` 
 
 
 
