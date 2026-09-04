@@ -37,7 +37,16 @@ Y encontramos que el usuario es carlos. por lo que ahora podemos acceder con las
 ![]()
 
 ## Paso N4: Escalando privilegios
-Al hacer ```sudo -l``` encontramos la ruta ```(ALL) NOPASSWD: /usr/bin/python3 /opt/script.py``` la cuál, nos dice  que podemos ejecutar servicio sudo en la ruta ```/usr/bin/python3``` y en la ruta ```/opt``` hay un archivo python ejecutable. 
+Al hacer ```sudo -l``` encontramos la ruta ```(ALL) NOPASSWD: /usr/bin/python3 /opt/script.py``` la cuál, nos dice  que podemos ejecutar servicio sudo en la ruta ```/usr/bin/python3``` y en la ruta ```/opt``` hay un archivo python ejecutable el cual contiene este script:
+![]()
+
+Podemos ver que el script corre ```import shutil``` sin la direccion completa y exacta el recurso (es decir, sin ruta absoluta), por lo que podemos abusar de ello usando un Python Librarie Hijacking.
+
+Para esto, 
 
 
 
+
+
+
+import os; os.system("/bin/bash")
