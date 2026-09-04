@@ -34,6 +34,7 @@ hydra -L /usr/share/seclists/Usernames/xato-net-10-million-usernames.txt -p JIFG
 ![hydra user](images/img4.png)
 
 Y encontramos que el usuario es carlos. por lo que ahora podemos acceder con las credenciales completas al ssh ```ssh carlos@172.17.0.2```
+
 ![carlos](images/img5.png)
 
 ## Paso N4: Python Librarie Hijacking
