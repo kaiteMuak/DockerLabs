@@ -36,7 +36,7 @@ hydra -L /usr/share/seclists/Usernames/xato-net-10-million-usernames.txt -p JIFG
 Y encontramos que el usuario es carlos. por lo que ahora podemos acceder con las credenciales completas al ssh ```ssh pedro@172.17.0.2```
 ![]()
 
-## Paso N4: Escalando privilegios
+## Paso N4: Python Librarie Hijacking
 Al hacer ```sudo -l``` encontramos la ruta ```(ALL) NOPASSWD: /usr/bin/python3 /opt/script.py``` la cuál, nos dice  que podemos ejecutar servicio sudo en la ruta ```/usr/bin/python3``` y en la ruta ```/opt``` hay un archivo python ejecutable el cual contiene este script:
 ![]()
 
@@ -50,8 +50,11 @@ echo 'import os; os.system("/bin/bash")' > /opt/shutil.py
 
 Python Librarie Hijacking, consiste en una vulnerabilidad la cuál podemos aprovechar una declaracion ```import``` sin ruta absoluta, para correr un script propio con nombre el nombre de la declaracion import.
 
-En este caso, podemos ver que ```script.py``` corre ```import shutil``` sin ruta absoluta, por lo que, podemos crear un archivo de nombre ```shutil``` el cuál se ejecutara. Python Librarie Hijacking primero buscará el recurso en el mismo directorio en el cual se hospeda el script, en este caso, en ```/opt``` 
+En este caso, podemos ver que ```script.py``` corre ```import shutil``` sin ruta absoluta, por lo que, podemos crear un archivo de nombre ```shutil``` el cuál se ejecutara. Python Librarie Hijacking primero buscará el recurso en el mismo directorio en el cuál se hospeda el script, en este caso, en ```/opt```, por eso, creamos nuesto ```shutil.py``` en ```/opt```, ya que ahi es donde se hospeda el script inicial, por lo que buscara ahi inicialmente el recurso.
+![]()
 
+## Paso N5: Escalando privilegios
+Una vez ya entendido Python Librarie Hijacking, ejecutaremos ```shutil.py``` de la siguiente forma:
 
 
 
