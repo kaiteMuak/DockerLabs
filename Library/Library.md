@@ -17,6 +17,16 @@ Al entrar a ```http://172.17.0.2/``` veremos la página default de apache, por l
 ```
 gobuster dir -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt -u http://172.17.0.2/ -x php,html
 ```
+![]()
+
+Descubrimos ```index.php``` el cuál, al hacerle un curl (o en su defecto entrar e inspeccionar) encontraremos un texto:
+![]()
+```
+<h1>JIFGHDS87GYDFIGD</h1>
+```
+Parece ser una contraseña, pero no tenemos ningún usuario, no hay mas información relevante relacionada a la página web, por lo que procederemos a usar fuerza bruta.
+
+## Paso N3: Fuerza bruta con Hydra
 
 Raw code
 
