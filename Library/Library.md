@@ -39,6 +39,7 @@ Y encontramos que el usuario es carlos. por lo que ahora podemos acceder con las
 
 ## Paso N4: Python Librarie Hijacking
 Al hacer ```sudo -l``` encontramos la ruta ```(ALL) NOPASSWD: /usr/bin/python3 /opt/script.py``` la cuál, nos dice  que podemos ejecutar servicio sudo en la ruta ```/usr/bin/python3``` y en la ruta ```/opt``` hay un archivo python ejecutable el cual contiene este script:
+
 ![script](images/img6.png)
 
 Podemos ver que el script corre ```import shutil``` sin la direccion completa y exacta del recurso (es decir, sin ruta absoluta), por lo que podemos abusar de ello usando un Python Librarie Hijacking.
