@@ -46,7 +46,7 @@ Para esto, crearemos un archivo llamado ```shutil.py``` y haremos que ejecute el
 ```
 echo 'import os; os.system("/bin/bash")' > /opt/shutil.py
 ```
-![script](images/img)
+![script](images/img7.png)
 
 Python Librarie Hijacking, consiste en una vulnerabilidad la cuál podemos aprovechar una declaracion ```import``` sin ruta absoluta, para correr un script propio con nombre el nombre de la declaracion import.
 
@@ -59,6 +59,5 @@ Una vez ya entendido Python Librarie Hijacking, ejecutaremos ```shutil.py``` de 
 sudo /usr/bin/python3 /opt/script.py
 ```
 Como ya explicamos, sudo se ejecutará en la ruta sudo ```/usr/bin/python3```, y buscara el ```script.py``` en ```/opt```, dentro del script, se vera la declaracion ```import shutil```, el cuál al no encontrar la ruta absoluta, tomará el script que nosotros creamos, accediendo finalmente como usuarios root.
-
-
+![sudo](images/img8.png)
 
