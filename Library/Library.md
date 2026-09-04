@@ -42,11 +42,14 @@ Al hacer ```sudo -l``` encontramos la ruta ```(ALL) NOPASSWD: /usr/bin/python3 /
 
 Podemos ver que el script corre ```import shutil``` sin la direccion completa y exacta el recurso (es decir, sin ruta absoluta), por lo que podemos abusar de ello usando un Python Librarie Hijacking.
 
-Para esto, 
+Para esto, crearemos un archivo llamado ```shutil.py``` y haremos que ejecute el siguiente comando:
+```
+echo 'import os; os.system("/bin/bash")' > shutil.py
+```
+Python Librarie Hijacking, consiste en una vulnerabilidad la cuál podemos aprovechar una declaracion ```import``` sin ruta absoluta, para correr un script propio con nombre de
 
 
 
 
 
 
-import os; os.system("/bin/bash")
