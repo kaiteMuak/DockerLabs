@@ -27,10 +27,17 @@ Descubrimos ```index.php``` el cuál, al hacerle un curl (o en su defecto entrar
 Parece ser una contraseña, pero no tenemos ningún usuario, no hay mas información relevante relacionada a la página web, por lo que procederemos a usar fuerza bruta.
 
 ## Paso N3: Fuerza bruta con Hydra
-
-Raw code
-
-
+Como ya tenemos la contraseña, nos interesa descubrir el usuario, por lo que ejecutamos
 ```
 hydra -L /usr/share/seclists/Usernames/xato-net-10-million-usernames.txt -p JIFGHDS87GYDFIGD ssh://172.17.0.2 -I
 ```
+![]()
+
+Y encontramos que el usuario es carlos. por lo que ahora podemos acceder con las credenciales completas al ssh ```ssh pedro@172.17.0.2```
+![]()
+
+## Paso N4: Escalando privilegios
+Al hacer ```sudo -l``` encontramos la ruta ```(ALL) NOPASSWD: /usr/bin/python3 /opt/script.py``` la cuál, nos dice  que podemos ejecutar servicio sudo en la ruta ```/usr/bin/python3``` y en la ruta ```/opt``` hay un archivo python ejecutable. 
+
+
+
