@@ -44,7 +44,7 @@ Podemos ver que el script corre ```import shutil``` sin la direccion completa y 
 
 Para esto, crearemos un archivo llamado ```shutil.py``` y haremos que ejecute el siguiente comando:
 ```
-echo 'import os; os.system("/bin/bash")' > shutil.py
+echo 'import os; os.system("/bin/bash")' > /opt/shutil.py
 ```
 Python Librarie Hijacking, consiste en una vulnerabilidad la cuál podemos aprovechar una declaracion ```import``` sin ruta absoluta, para correr un script propio con nombre de
 
