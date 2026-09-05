@@ -37,12 +37,12 @@ Y encontramos que el usuario es carlos. por lo que ahora podemos acceder con las
 
 ![carlos](images/img5.png)
 
-## Paso N4: Python Librarie Hijacking
+## Paso N4: Python Library Hijacking
 Al hacer ```sudo -l``` encontramos la ruta ```(ALL) NOPASSWD: /usr/bin/python3 /opt/script.py``` la cuál, nos dice  que podemos ejecutar servicio sudo en la ruta ```/usr/bin/python3``` y en la ruta ```/opt``` hay un archivo python ejecutable el cual contiene este script:
 
 ![script](images/img6.png)
 
-Podemos ver que el script corre ```import shutil``` sin la direccion completa y exacta del recurso (es decir, sin ruta absoluta), por lo que podemos abusar de ello usando un Python Librarie Hijacking.
+Podemos ver que el script corre ```import shutil``` sin la direccion completa y exacta del recurso (es decir, sin ruta absoluta), por lo que podemos abusar de ello usando un Python Library Hijacking.
 
 Para esto, crearemos un archivo llamado ```shutil.py``` y haremos que ejecute el siguiente comando:
 ```
@@ -50,16 +50,16 @@ echo 'import os; os.system("/bin/bash")' > /opt/shutil.py
 ```
 ![script](images/img7.png)
 
-Python Librarie Hijacking, consiste en una vulnerabilidad la cuál podemos aprovechar una declaracion ```import``` sin ruta absoluta, para correr un script propio con nombre el nombre de la declaracion import.
+Python Library Hijacking, consiste en una vulnerabilidad la cuál podemos aprovechar una declaracion ```import``` sin ruta absoluta, para correr un script propio con nombre el nombre de la declaración import.
 
-En este caso, podemos ver que ```script.py``` corre ```import shutil``` sin ruta absoluta, por lo que, podemos crear un archivo de nombre ```shutil``` el cuál se ejecutara. Python Librarie Hijacking primero buscará el recurso en el mismo directorio en el cuál se hospeda el script, en este caso, en ```/opt```, por eso, creamos nuesto ```shutil.py``` en ```/opt```, ya que ahi es donde se hospeda el script inicial, por lo que buscara ahi inicialmente el recurso.
+En este caso, podemos ver que ```script.py``` corre ```import shutil``` sin ruta absoluta, por lo que, podemos crear un archivo de nombre ```shutil``` el cuál se ejecutara. Python Librarie Hijacking primero buscará el recurso en el mismo directorio en el cuál se hospeda el script, en este caso, en ```/opt```, por eso, creamos nuesto ```shutil.py``` en ```/opt```, ya que ahi es donde se hospeda el script inicial, por lo que buscará ahí inicialmente el recurso.
 ![]()
 
 ## Paso N5: Escalando privilegios
-Una vez ya entendido Python Librarie Hijacking, ejecutaremos ```shutil.py``` de la siguiente forma:
+Una vez ya entendido Python Library Hijacking, ejecutaremos ```shutil.py``` de la siguiente forma:
 ```
 sudo /usr/bin/python3 /opt/script.py
 ```
-Como ya explicamos, sudo se ejecutará en la ruta sudo ```/usr/bin/python3```, y buscara el ```script.py``` en ```/opt```, dentro del script, se vera la declaracion ```import shutil```, el cuál al no encontrar la ruta absoluta, tomará el script que nosotros creamos, accediendo finalmente como usuarios root.
+Como ya explicamos, sudo se ejecutará en la ruta sudo ```/usr/bin/python3```, y buscará el ```script.py``` en ```/opt```, dentro del script, se vera la declaración ```import shutil```, el cuál al no encontrar la ruta absoluta, tomará el script que nosotros creamos, accediendo finalmente como usuarios root.
 ![sudo](images/img8.png)
 
