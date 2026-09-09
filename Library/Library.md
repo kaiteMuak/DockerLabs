@@ -61,5 +61,6 @@ Una vez ya entendido Python Library Hijacking, ejecutaremos ```shutil.py``` de l
 sudo /usr/bin/python3 /opt/script.py
 ```
 Como ya explicamos, sudo se ejecutará en la ruta sudo ```/usr/bin/python3```, y buscará el ```script.py``` en ```/opt```, dentro del script, se vera la declaración ```import shutil```, el cuál al no encontrar la ruta absoluta, tomará el script que nosotros creamos, accediendo finalmente como usuarios root.
+
 ![sudo](images/img8.png)
 
