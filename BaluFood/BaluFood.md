@@ -42,4 +42,15 @@ Intentamos entrar al usuario ```balulero``` con esta contraseña y logramos acce
 ![]()
 
 ## Paso N5: Escalada de privilegios
-Al intentar la extracción de información de subida de privilegios con ```sudo -l``` u obtenciòn de binarios SUID vulnerables con
+Al intentar la extracción de información de subida de privilegios con ```sudo -l``` u obtenciòn de binarios SUID vulnerables con ```find / -perm -4000 2>/dev/null``` no encontraremos información relevante.
+
+Viendo los archivos ocultos de nuestro directorio default encontraremos ```.bashrc```
+![]()
+
+El cual al hacerle un ```cat``` encontraremos información relevante:
+```
+alias ser-root='echo chocolate2 | su - root'
+```
+![]()
+
+Así que accediento a root con las credenciales obtenidas, finalmente subimos de privilegios.
