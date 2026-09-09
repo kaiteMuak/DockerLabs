@@ -13,7 +13,7 @@ nmap 172.17.0.2 -sS -sVC -n -Pn -p- --open -oG open_ports
 Vemos que estan abiertos los puerto 5000 y 22 correspondiente a servicios http y ssh respectivamente.
 
 ## Paso N2: Visualización de la página
-Entramos a la página con el siguiente enlace ```http://172.17.0.2/5000```, le especificamos que queremos entrar en el puerto 5000, pues ahí es donde está la página web, de no especificar el puerto, la página no cargaria.
+Entramos a la página con el siguiente enlace ```http://172.17.0.2:5000```, le especificamos que queremos entrar en el puerto 5000, pues ahí es donde está la página web, de no especificar el puerto, la página no cargaria.
 
 Una vez investigada la pagina, llegariamos a la página de login ```http://172.17.0.2:5000/login```.
 Cómo no tenemos información de que credenciales usar, podremos usar credenciales básicas como lo seria ```admin:admin```
