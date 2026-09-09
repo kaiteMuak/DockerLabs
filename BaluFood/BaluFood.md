@@ -54,5 +54,5 @@ alias ser-root='echo chocolate2 | su - root'
 ```
 ![privileges](images/img8.png)
 
-Así que accediento a root con las credenciales obtenidas, finalmente subimos de privilegios.
+Así que accediendo a root con las credenciales obtenidas, finalmente subimos de privilegios.
 ![root](images/img9.png)
