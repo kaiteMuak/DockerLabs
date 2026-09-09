@@ -19,5 +19,27 @@ Cómo no tenemos información de que credenciales usar, podremos usar credencial
 y lograremos entrar
 ![]()
 
-## Paso N3: Obtención de credenciales ssh y pivoting
+## Paso N3: Obtención de credenciales
 Si vemos el código fuente de la página, veremos las credenciales del ssh
+```
+<!-- Backup de acceso: sysadmin:backup123 -->
+```
+![]()
+
+accedemos al servidor ssh con las credenciales obtenidas
+![]()
+
+## Paso N4: Pivoting
+En el directorios ```/home/``` veremos ```balulero``` y ```sysadmin```, dandonos informacion de que existe el usuario balulero.
+
+En el directorio de sysadmin, hay un archivo llamado ```app.py``` el cual si le hacemos un cat, veremos la siguiente información
+```
+app.secret_key = 'cuidaditocuidadin'
+```
+![]()
+
+Intentamos entrar al usuario ```balulero``` con esta contraseña y logramos acceder
+![]()
+
+## Paso N5: Escalada de privilegios
+Al intentar la extracción de información de subida de privilegios con ```sudo -l``` u obtenciòn de binarios SUID vulnerables con
