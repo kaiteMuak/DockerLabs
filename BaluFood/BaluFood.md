@@ -18,17 +18,17 @@ Entramos a la página con el siguiente enlace ```http://172.17.0.2:5000```, le e
 Una vez investigada la pagina, llegariamos a la página de login ```http://172.17.0.2:5000/login```.
 Cómo no tenemos información de que credenciales usar, podremos usar credenciales básicas como lo seria ```admin:admin```
 y lograremos entrar
-![]()
+![credential](images/img2.png)
 
 ## Paso N3: Obtención de credenciales
 Si vemos el código fuente de la página, veremos las credenciales del ssh
 ```
 <!-- Backup de acceso: sysadmin:backup123 -->
 ```
-![]()
+![ssh credentials](images/img3.png)
 
 accedemos al servidor ssh con las credenciales obtenidas
-![]()
+![ssh access](images/img4.png)
 
 ## Paso N4: Pivoting
 En el directorios ```/home/``` veremos ```balulero``` y ```sysadmin```, dandonos informacion de que existe el usuario balulero.
@@ -37,21 +37,22 @@ En el directorio de sysadmin, hay un archivo llamado ```app.py``` el cual si le 
 ```
 app.secret_key = 'cuidaditocuidadin'
 ```
-![]()
+![credentials pivoting](images/img5.png)
 
 Intentamos entrar al usuario ```balulero``` con esta contraseña y logramos acceder
-![]()
+![pivoting access](images/img6.png)
 
 ## Paso N5: Escalada de privilegios
 Al intentar la extracción de información de subida de privilegios con ```sudo -l``` u obtenciòn de binarios SUID vulnerables con ```find / -perm -4000 2>/dev/null``` no encontraremos información relevante.
 
 Viendo los archivos ocultos de nuestro directorio default encontraremos ```.bashrc```
-![]()
+![hidden file](images/img7.png)
 
 El cual al hacerle un ```cat``` encontraremos información relevante:
 ```
 alias ser-root='echo chocolate2 | su - root'
 ```
-![]()
+![privileges](images/img8.png)
 
 Así que accediento a root con las credenciales obtenidas, finalmente subimos de privilegios.
+![root](images/img9.png)
