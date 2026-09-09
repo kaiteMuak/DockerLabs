@@ -6,7 +6,7 @@ En esta máquina tendremos que buscar información filtrada del código fuente p
 ## Paso N1: Reconocimiento 
 Empezamos escaneando los puertos tcp de la máquina con sus respectivas versiones y servicios:
 ```
-172.17.0.2
+nmap 172.17.0.2 -sS -sVC -n -Pn -p- --open -oG open_ports
 ```
 ![]()
 
