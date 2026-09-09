@@ -8,7 +8,7 @@ Empezamos escaneando los puertos tcp de la máquina con sus respectivas versione
 ```
 nmap 172.17.0.2 -sS -sVC -n -Pn -p- --open -oG open_ports
 ```
-![]()
+![TCP scan](images/img1.png)
 
 Vemos que estan abiertos los puerto 5000 y 22 correspondiente a servicios http y ssh respectivamente.
 
