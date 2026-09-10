@@ -2,6 +2,7 @@
 
 ## Resumen
 En esta máquina haremos fuerza bruta mediante hydra para reconocer el usuario del servidor ssh y escalar privilegios mediante un script de python library hijacking
+![certificate](images/library.webp)
 
 ## Paso N1: Reconocimiento
 Usamos nmap para escanear los puertos y sus correspondientes servicios y versiones
