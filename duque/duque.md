@@ -8,6 +8,11 @@ Empezamos escaneando los puertos TCP de la máquina y sus determinadas versiones
 ```
 nmap 172.17.0.2 -sS -sVC -n -Pn -p- --open -oG open_ports
 ```
+![]()
+Podemos ver que estan abiertos los puertos TCP 22 y 80 correspondientes a ssh y html respectivamente.
+
+## Paso N2: Búsqueda de subdirectorios
+Al entrar a la página e indagar un poco, 
 
 raw code
 ```
