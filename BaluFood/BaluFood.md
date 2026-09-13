@@ -2,6 +2,7 @@
 
 ## Resumen 
 En esta máquina tendremos que buscar información filtrada del código fuente para lograr acceder al usuario, practicaremos pivoting y subida de privilegios mediante archivos ocultos.
+![cert](images/BaluFood.webp)
 
 ## Paso N1: Reconocimiento 
 Empezamos escaneando los puertos tcp de la máquina con sus respectivas versiones y servicios:
