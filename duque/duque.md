@@ -20,4 +20,8 @@ gobuster dir -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.
 
 y encontramos el subdirectorio ```/bills```, el cuál es una página de login.
 
-## Paso N3: Accediendo a la base de datos
+## Paso N3: Accediendo sin credenciales
+Inyectamos código sql en el nombre, poniendo ```admin' -- -``` para acceder a la página como administradores
+![]()
+
+
