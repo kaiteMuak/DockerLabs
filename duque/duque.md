@@ -16,12 +16,8 @@ Al entrar a la página e indagar un poco, no encontraremos gran cosa, por lo que
 ```
 gobuster dir -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -u http://172.17.0.2/ -x php,html
 ```
-y encontramos el subdirectorio ```/bills```, el cuál el una página de login.
+![]()
 
-raw code
-```
- nmap 172.17.0.2 -sS -sVC -n -Pn -p- --open -oG open_ports
-```
-```
+y encontramos el subdirectorio ```/bills```, el cuál es una página de login.
 
-```
+## Paso N3: Accediendo a la base de datos
