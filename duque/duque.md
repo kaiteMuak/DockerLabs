@@ -3,7 +3,11 @@
 ## Resumen
 lorem ipsum
 
-
+## Paso N1: Reconocimiento
+Empezamos escaneando los puertos TCP de la máquina y sus determinadas versiones y servicios correspondientes.
+```
+nmap 172.17.0.2 -sS -sVC -n -Pn -p- --open -oG open_ports
+```
 
 raw code
 ```
