@@ -27,7 +27,7 @@ Usamos ```grep``` para filtrar especificamente por los dominios que devuelvan st
 vemos que el ```backup.internal.dl``` devuelve status 200. 
 Al entrar, veremos que el servidor no devuelve contenido nuevamente, por lo que lo agregamos a ```/etc/hosts``` ```172.17.0.2 backup.internal.dl```
 
-## Paso N3: entendiendo el WAF
+## Paso N3: Entendiendo el WAF
 Al entrar a la página, veremos que hay una consola, la cual solo nos permite ejecutar 5 comandos ya preestablecidos y abajo veremos una consola con el output
 ![]()
 
@@ -67,4 +67,7 @@ hydra -l vault -P vaultpasswd ssh://172.17.0.2/
 ![]()
 
 vemos que la contraseña es ```Yk8$pZ5@cN4!```, por lo que accedemos al ssh con el usuario vault ```ssh vault@172.17.0.2```
+![]()
 
+## Paso N7: Escalando privilegios
+Una vez ya dentro del usuario ```vault``` buscamos Binarios SUID con ``````
