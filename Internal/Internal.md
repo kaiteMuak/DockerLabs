@@ -26,3 +26,6 @@ Usamos ```grep``` para filtrar especificamente por los dominios que devuelvan st
 
 vemos que el ```backup.internal.dl``` devuelve status 200. 
 Al entrar, veremos que el servidor no devuelve contenido nuevamente, por lo que lo agregamos a ```/etc/hosts``` ```172.17.0.2 backup.internal.dl```
+
+## Paso N3: entendiendo el WAF
+Al entrar a la página, veremos que hay una consola, la cuál solo nos permite ejecutar 5 comandos ya preestablecidos y abajo veremos una consola con el output
