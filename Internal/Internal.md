@@ -33,4 +33,11 @@ Al entrar a la página, veremos que hay una consola, la cual solo nos permite ej
 
 El WAF podemos entenderlo como una validación, el servidor valida el input que le damos, en caso de que pase los filtros, nos devolvera su respectivo output, en caso de que no pase los filtros nos dará un error, por lo que tenemos que buscar como saltarnos estos filtros para ejecutar nuestros propios comandos.
 
-En este caso, la mánera de romperlo, será usando uno de los 5 comando preestablecidos, seguido de un pipe ```|``` y el comando separado por comillas vacias, algo así
+En este caso, la mánera de romperlo, será usando uno de los 5 comando preestablecidos, seguido de un pipe ```|``` y el comando separado por comillas vacias, algo así:
+```
+/var/backups | who''ami
+```
+Esto funciona de la siguiente manera:
+     1.El WAF probablemente valida el input verificando si coincide con uno de los 5 comandos permitidos. Al anteponer /var/backups (comando válido), la validación pasa sin inspeccionar lo que sigue tras el pipe ```|```. La shell, en cambio, sí interpreta el pipe y ejecuta ambos comandos en secuencia.
+     2. Separamos el comando con comillas vacías ```''``` ya que de esta manera el WAF lo valida como texto crudo, mientras que la shell concatena el texto interpretando el comando completo.
+Si nos saltamos una de las dos condiciones, el WAF no lo validará
