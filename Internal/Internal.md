@@ -67,11 +67,10 @@ hydra -l vault -P vaultpasswd ssh://172.17.0.2/
 ![brute force](images/img6.png)
 
 vemos que la contraseña es ```Yk8$pZ5@cN4!```, por lo que accedemos al ssh con el usuario vault ```ssh vault@172.17.0.2```
-![]()
 
 ## Paso N7: Escalando privilegios
 Una vez ya dentro del usuario ```vault``` buscamos Binarios SUID con ```find / -perm -4000 2>/dev/null```
-![]()
+![suid binaries](images/img7.png)
 
 y encontramos ```/usr/local/bin/vaultctl```, el cual lo ejecutamos en la shell y pasaremos a ser usuarios root
-![]()
+![root](images/img8.png)
