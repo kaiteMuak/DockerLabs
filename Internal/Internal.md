@@ -25,4 +25,4 @@ Usamos ```grep``` para filtrar especificamente por los dominios que devuelvan st
 ![]()
 
 vemos que el ```backup.internal.dl``` devuelve status 200. 
-Al entrar, veremos que el servidor no devuelve contenido nuevamente, por lo que lo agregamos a ```/etc/hosts``` ```backup.internal.dl```
+Al entrar, veremos que el servidor no devuelve contenido nuevamente, por lo que lo agregamos a ```/etc/hosts``` ```172.17.0.2 backup.internal.dl```
