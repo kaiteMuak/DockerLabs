@@ -55,7 +55,7 @@ tendremos acceso a la shell de la página.
 
 ## Paso N5: Buscando credenciales
 En el directorio ```/opt``` hay un archivo oculto llamado ```.vault_pass.txt``` y dentro tiene lo que parecer ser una wordlist
-![]()
+![wrdlist](images/img5.png)
 
 nos copiaremos las contraseñas de la wordlist a nuestra máquina local y las guardaré en un archivo llamado ```vaultpasswd```
 
@@ -64,7 +64,7 @@ Usamos hydra para hacer fuerza bruta al usuario ```vault``` con la wordlist que 
 ```
 hydra -l vault -P vaultpasswd ssh://172.17.0.2/
 ```
-![]()
+![brute force](images/img6.png)
 
 vemos que la contraseña es ```Yk8$pZ5@cN4!```, por lo que accedemos al ssh con el usuario vault ```ssh vault@172.17.0.2```
 ![]()
