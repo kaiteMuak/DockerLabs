@@ -55,6 +55,7 @@ tendremos acceso a la shell de la página.
 
 ## Paso N5: Buscando credenciales
 En el directorio ```/opt``` hay un archivo oculto llamado ```.vault_pass.txt``` y dentro tiene lo que parecer ser una wordlist
+
 ![wrdlist](images/img5.png)
 
 nos copiaremos las contraseñas de la wordlist a nuestra máquina local y las guardaré en un archivo llamado ```vaultpasswd```
