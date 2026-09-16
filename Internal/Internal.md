@@ -28,4 +28,9 @@ vemos que el ```backup.internal.dl``` devuelve status 200.
 Al entrar, veremos que el servidor no devuelve contenido nuevamente, por lo que lo agregamos a ```/etc/hosts``` ```172.17.0.2 backup.internal.dl```
 
 ## Paso N3: entendiendo el WAF
-Al entrar a la página, veremos que hay una consola, la cuál solo nos permite ejecutar 5 comandos ya preestablecidos y abajo veremos una consola con el output
+Al entrar a la página, veremos que hay una consola, la cual solo nos permite ejecutar 5 comandos ya preestablecidos y abajo veremos una consola con el output
+![]()
+
+El WAF podemos entenderlo como una validación, el servidor valida el input que le damos, en caso de que pase los filtros, nos devolvera su respectivo output, en caso de que no pase los filtros nos dará un error, por lo que tenemos que buscar como saltarnos estos filtros para ejecutar nuestros propios comandos.
+
+En este caso, la mánera de romperlo, será usando uno de los 5 comando preestablecidos, seguido de un pipe ```|``` y el comando separado por comillas vacias, algo así
