@@ -8,7 +8,7 @@ Empezamos escaneando los puertos TCP de la máquina con sus respectivos servicio
 ```
 nmap 172.17.0.2 -sS -sVC -n -Pn -p- --open -oG open_ports
 ```
-![]
+![TCP scan](images/img1.png)
 
 Vemos que están los puertos 22 y 80 correspondientes a ssh y http.
 
