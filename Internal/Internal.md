@@ -38,6 +38,9 @@ En este caso, la mánera de romperlo, será usando uno de los 5 comando preestab
 /var/backups | who''ami
 ```
 Esto funciona de la siguiente manera:
+
      1.El WAF probablemente valida el input verificando si coincide con uno de los 5 comandos permitidos. Al anteponer /var/backups (comando válido), la validación pasa sin inspeccionar lo que sigue tras el pipe ```|```. La shell, en cambio, sí interpreta el pipe y ejecuta ambos comandos en secuencia.
+     
      2. Separamos el comando con comillas vacías ```''``` ya que de esta manera el WAF lo valida como texto crudo, mientras que la shell concatena el texto interpretando el comando completo.
+     
 Si nos saltamos una de las dos condiciones, el WAF no lo validará
