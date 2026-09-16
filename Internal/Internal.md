@@ -70,4 +70,4 @@ vemos que la contraseña es ```Yk8$pZ5@cN4!```, por lo que accedemos al ssh con 
 ![]()
 
 ## Paso N7: Escalando privilegios
-Una vez ya dentro del usuario ```vault``` buscamos Binarios SUID con ``````
+Una vez ya dentro del usuario ```vault``` buscamos Binarios SUID con ```find / -perm -4000 2>/dev/null```
