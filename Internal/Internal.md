@@ -1,7 +1,7 @@
-## Internal - Writeup
+# Internal - Writeup
 
 ## Resumen
-Lorem ipsum
+En esta máquina nos enfrentaremos a un WAF el cuál trataremos de pasar los filtros en base a una hipotesis, usaremos fuerza bruta para entrar a usuarios y escalaremos privilegios.
 
 ## Paso N1: Reconocimiento
 Empezamos escaneando los puertos TCP de la máquina con sus respectivos servicios y versiones
