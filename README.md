@@ -7,3 +7,4 @@
 4. [internship](/internship/internship.md) - SQLi | Writable Script Abuse | Steganography
 5. [Library](/Library/Library.md) - SSH Brute Force | Python Library Hijacking
 6. [BaluFood](/BaluFood/BaluFood.md) - Information Disclosure | Credential Reuse | Dotfile Enumeration
+7. [Internal](/Internal/Internal.md) - WAF Bypass | Reverse Shell | Credential Bruteforce | SUID Binaries
