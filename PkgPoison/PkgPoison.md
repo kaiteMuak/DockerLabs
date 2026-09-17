@@ -26,5 +26,4 @@ Como ya tenemos el usuario, haremos fuerza bruta para encontrar la contraseña d
 hydra -l dev -P /usr/share/wordlists/rockyou.txt ssh://172.17.0.2/
 ```
 
-<img width="666" height="485" alt="image" src="https://github.com/user-attachments/assets/973db87c-55d0-4096-a8e9-7f868f6f07a9" />
 
