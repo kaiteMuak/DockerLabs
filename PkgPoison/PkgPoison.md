@@ -21,10 +21,11 @@ gobuster dir -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.
 encontraremos el subdirectorio ```/notes/``` el cual nos lleva a note.txt y contiene contenido interesante, nos dice que las credenciales antiguas son ```dev:developer123```, por lo que ya tenemos el usuario.
 
 ## Paso N3: Acceso a usuario dev
-Como ya tenemos el usuario, haremos fuerza bruta para encontrar la contraseña de esta forma
+Como ya tenemos el usuario, haremos fuerza bruta para encontrar la contraseña de esta forma:
 ```
 hydra -l dev -P /usr/share/wordlists/rockyou.txt ssh://172.17.0.2/
 ```
 <img width="665" height="399" alt="image" src="https://github.com/user-attachments/assets/9d87cd3e-0379-46d9-a5f9-ea44918271f8" />
 
+Encontramos que las credenciales correctas son ```dev:computer``` por lo que ahora logramos entrar al servidor ssh con las respectivas credenciales ```ssh dev@172.17.0.2```.
 
