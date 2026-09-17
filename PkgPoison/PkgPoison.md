@@ -17,3 +17,11 @@ En la página inicial no encontraremos gran cosa, por lo que empezamos la busque
 gobuster dir -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -u http://172.17.0.2/ -x php,html
 ```
 ![]()
+
+encontraremos el subdirectorio ```/notes/``` el cual nos lleva a note.txt y contiene contenido interesante, nos dice que las credenciales antiguas son ```dev:developer123```, por lo que ya tenemos el usuario.
+
+## Paso N3: Acceso a usuario dev
+Como ya tenemos el usuario, haremos fuerza bruta para encontrar la contraseña de esta forma
+```
+hydra -l dev -P /usr/share/wordlists/rockyou.txt ssh://172.17.0.2/
+```
