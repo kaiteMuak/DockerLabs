@@ -1,7 +1,7 @@
 # PkgPoison - Writeup
 
 ## Resumen
-Máquina en la cual tendremos que usar fuerza bruta para obtener la contraseña del usuario encontrado, Buscar información para moverse entre usuarios y finalmente crear un script malicioso para obtener acceso a la máquina.
+Máquina en la cual tendremos que usar fuerza bruta para obtener la contraseña del usuario encontrado, buscar información para moverse entre usuarios y finalmente crear un script malicioso para obtener acceso a la máquina.
 
 ## Paso N1: Reconocimiento 
 Empezamos escaneando los puertos TCP con sus respectivos servicios y versiones
@@ -12,7 +12,7 @@ y vemos que están los puertos 22 y 80 correspondientes a ssh y http respectivam
 <img width="668" height="438" alt="image" src="https://github.com/user-attachments/assets/abe66963-21fe-444f-9163-b8b7a0c1bd50" />
 
 ## Paso N2: Descubrimiento de subdirectorios
-En la página inicial no encontraremos gran cosa, por lo que empezamos la busqueda de subdirectorios en busca de información.
+En la página inicial no encontraremos gran cosa, por lo que empezamos la búsqueda de subdirectorios en busca de información.
 ```
 gobuster dir -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -u http://172.17.0.2/ -x php,html
 ```
@@ -40,7 +40,7 @@ strings secret.cpython-38.pyc
 y obtenemos las credenciales ```admin:p@$$w0r8321```, por lo que ahora podemos acceder a usuario ```admin```
 
 ## Paso N5: Escalando privilegios
-Una vez dentro del usuario ```admin``` ejecutamos ```sudo -l``` y no devuelve
+Una vez dentro del usuario ```admin``` ejecutamos ```sudo -l``` y nos devuelve:
 <img width="670" height="155" alt="image" src="https://github.com/user-attachments/assets/8c7ea224-f593-4647-91f6-a3594c2a1b12" />
 
 ```(ALL) NOPASSWD: /usr/bin/pip3 install *``` Nos dice que el usuario admin puede ejecutar pip3 install con cualquier argumento, como cualquier usuario sin necesidad de contraseña, por lo que podemos aprovecharnos para crear un script malicioso y ganar acceso root.
@@ -53,7 +53,7 @@ Creamos el archivo malicioso ```setup.py```
 ```
 sudo /usr/bin/pip3 install .
 ```
-le decimos a pip que instale el paquete ```.py``` del directorio actual, en este caso ```setup.py```
+le decimos a pip que instale el paquete que está definido en el directorio actual, en este caso ```setup.py```
 
 ```
 bash -p
