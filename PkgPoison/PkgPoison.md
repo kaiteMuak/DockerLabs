@@ -38,3 +38,9 @@ strings secret.cpython-38.pyc
 <img width="600" height="214" alt="image" src="https://github.com/user-attachments/assets/be7b1b3b-dc86-4127-8d79-02965c24dfcb" />
 
 y obtenemos las credenciales ```admin:p@$$w0r8321```, por lo que ahora podemos acceder a usuario ```admin```
+
+## Paso N5: Escalando privilegios
+Una vez dentro del usuario ```admin``` ejecutamos ```sudo -l``` y no devuelve
+<img width="670" height="155" alt="image" src="https://github.com/user-attachments/assets/8c7ea224-f593-4647-91f6-a3594c2a1b12" />
+
+```/usr/bin/pip3 install *```
