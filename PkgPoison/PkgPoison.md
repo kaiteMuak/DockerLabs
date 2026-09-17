@@ -29,7 +29,7 @@ hydra -l dev -P /usr/share/wordlists/rockyou.txt ssh://172.17.0.2/
 
 Encontramos que las credenciales correctas son ```dev:computer``` por lo que ahora logramos entrar al servidor ssh con las respectivas credenciales ```ssh dev@172.17.0.2```.
 
-## Accediendo a usuario admin 
+## Paso N4: Accediendo a usuario admin 
 En el directorio home, vemos que hay un subdirectorio llamado ```admin``` lo que nos dice que hay un usuario con dicho nombre. 
 Explorando un poco el sistema, veremos que en ```/opt/scripts/__pycache__``` hay un archivo llamado ```secret.cpython-38.pyc```, el cual parece tener contenido pero está compilado, por lo que usamos ```strings``` para pasarlo a un formato humanamente legible.
 ```
@@ -37,3 +37,4 @@ strings secret.cpython-38.pyc
 ```
 <img width="600" height="214" alt="image" src="https://github.com/user-attachments/assets/be7b1b3b-dc86-4127-8d79-02965c24dfcb" />
 
+y obtenemos las credenciales ```admin:p@$$w0r8321```, por lo que ahora podemos acceder a usuario ```admin```
