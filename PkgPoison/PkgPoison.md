@@ -1,7 +1,7 @@
 # PkgPoison - Writeup
 
 ## Resumen
-Lorem ipsum
+Máquina en la cual tendremos que usar fuerza bruta para obtener la contraseña del usuario encontrado, Buscar información para moverse entre usuarios y finalmente crear un script malicioso para obtener acceso a la máquina.
 
 ## Paso N1: Reconocimiento 
 Empezamos escaneando los puertos TCP con sus respectivos servicios y versiones
