@@ -8,4 +8,4 @@
 5. [Library](/Library/Library.md) - SSH Brute Force | Python Library Hijacking
 6. [BaluFood](/BaluFood/BaluFood.md) - Information Disclosure | Credential Reuse | Dotfile Enumeration
 7. [Internal](/Internal/Internal.md) - WAF Bypass | Reverse Shell | Credential Bruteforce | SUID Binaries
-8. [PkgPoison](/PkgPoison/PkgPoison.md) 
+8. [PkgPoison](/PkgPoison/PkgPoison.md) - SSH Bruteforce | Compiled Python Extraction | Pip Package Abuse
