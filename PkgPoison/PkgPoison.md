@@ -29,3 +29,4 @@ hydra -l dev -P /usr/share/wordlists/rockyou.txt ssh://172.17.0.2/
 
 Encontramos que las credenciales correctas son ```dev:computer``` por lo que ahora logramos entrar al servidor ssh con las respectivas credenciales ```ssh dev@172.17.0.2```.
 
+Paso N4: 
