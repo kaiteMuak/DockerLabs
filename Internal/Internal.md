@@ -2,6 +2,8 @@
 
 ## Resumen
 En esta máquina nos enfrentaremos a un WAF el cuál trataremos de pasar los filtros en base a una hipotesis, usaremos fuerza bruta para entrar a usuarios y escalaremos privilegios.
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/570b01aa-ca78-403f-8692-43a722962285" />
+
 
 ## Paso N1: Reconocimiento
 Empezamos escaneando los puertos TCP de la máquina con sus respectivos servicios y versiones
