@@ -2,6 +2,7 @@
 
 ## Resumen
 Máquina en la cual tendremos que usar fuerza bruta para obtener la contraseña del usuario encontrado, buscar información para moverse entre usuarios y finalmente crear un script malicioso para obtener acceso a la máquina.
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/deb154b4-06b1-455e-a72c-972a16954c61" />
 
 ## Paso N1: Reconocimiento 
 Empezamos escaneando los puertos TCP con sus respectivos servicios y versiones
