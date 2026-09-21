@@ -26,7 +26,14 @@ Con el comando conseguido en el paso anterior, entraremos al interprete de maria
 ```
 mysql -u rocket -p -h 172.17.0.2 --ssl=0
 ```
-
+una vez dentro del intérprete, veremos que hay una base de datos llamada ```files_secret```, dentro tenemos la tabla ```rutas``` la cual si vemos su contenido, vemos que hay una fila de nombre ```secret``` y de ruta ```/unprivate/secret``` 
+```
+SHOW DATABASES;
+USE files_secret
+SHOW TABLES;
+SELECT * FROM rutas;
+```
+<img width="446" height="171" alt="image" src="https://github.com/user-attachments/assets/62afe944-09f2-4ead-b005-cd94fd813dc6" />
 
 
 
