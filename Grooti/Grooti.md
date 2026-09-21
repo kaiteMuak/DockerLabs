@@ -22,10 +22,11 @@ gobuster dir -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.
 y encontraremos ```/secret/```. Al entrar, mostrará un botón para descargar un archivo, cual contenido es ```mysql -u rocket -p -h 172.17.0.2 --ssl=0```
 
 ## Paso N3: Entrando al intérprete de mariaDB
-Con el comando conseguido en el paso anterior, entraremos al interprete de mariaDB
+Con el comando conseguido en el paso anterior, entraremos al interprete de mariaDB usando la contraseña encontrada ```password1```
 ```
-mysql -u rocket -p password1 -h 172.17.0.2 --ssl=0
+mysql -u rocket -p -h 172.17.0.2 --ssl=0
 ```
+
 
 
 
