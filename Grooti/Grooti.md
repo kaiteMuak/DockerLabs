@@ -44,5 +44,11 @@ Dentro de la página, veremos un formulario el cual pide un texto y un número d
 <img width="536" height="269" alt="image" src="https://github.com/user-attachments/assets/cda06d35-a237-44ee-a4a1-e2d1e05fd438" />
 
 Una vez interceptada la petición con burpsuite, mandaremos la información al ```intruder``` desde el ```http history```.
-En la ultima línea ```content=test&number=1``` subrayaremos el '1' y le daremos al boton ```Add $```, quedando así 
+En la ultima línea ```content=test&number=1``` subrayaremos el '1' y le daremos al boton ```Add $```, quedando así ```content=test&number=§1§```.
+
+Luego, configuraremos el payload en tipo ```Number``` con con rango de numeros secuencial, del 1 al 100, 1 por 1, las configuraciones se verán visualmente en la siguiente imagen.
+<img width="1333" height="475" alt="image" src="https://github.com/user-attachments/assets/5d07afea-4aee-4eee-aa54-8f61a89782bd" />
+
+Luego de configurar todo, 
+
 
