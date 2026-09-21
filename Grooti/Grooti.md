@@ -69,5 +69,6 @@ john --show hash.txt
 y vemos que la contraseña es ```password1```
 <img width="668" height="384" alt="image" src="https://github.com/user-attachments/assets/2f2fac69-8b5c-4283-88a1-b4e338bbc042" />
 
+Una vez descomprimido, nos dará ```password16.txt``` el cual parece ser una wordlist
 
 
