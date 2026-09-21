@@ -18,6 +18,7 @@ Explorando un poco por el apartado visual, llegaremos a ```http://172.17.0.2/ima
 gobuster dir -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -u http://172.17.0.2/ -x php,html
 ```
 <img width="667" height="438" alt="image" src="https://github.com/user-attachments/assets/20886c9e-bd56-40a1-8bda-cefa92ca3e5a" />
+
 y encontraremos ```/secret/```. Al entrar, mostrará un botón para descargar un archivo, cual contenido es ```mysql -u rocket -p -h 172.17.0.2 --ssl=0```
 
 
