@@ -36,3 +36,8 @@ SELECT * FROM rutas;
 <img width="446" height="171" alt="image" src="https://github.com/user-attachments/assets/62afe944-09f2-4ead-b005-cd94fd813dc6" />
 
 Por lo que ahora entraremos al navegador con esa ruta ```http://172.17.0.2/unprivate/secret/```
+
+## Paso N4: Usando burpsuite
+<img width="566" height="476" alt="image" src="https://github.com/user-attachments/assets/2e2867f1-c0b1-4122-99c1-e2e56a68ca40" />
+Dentro de la página, veremos un formulario el cual pide un texto y un número del 1 al 100, si ponemos un número equivocado, nos descargará un ```.txt``` sin relevancia, por lo que tendremos que buscar el número correcto y para facilitar el trabajo usaremos burpsuite
+
