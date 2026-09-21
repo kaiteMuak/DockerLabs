@@ -34,4 +34,5 @@ SHOW TABLES;
 SELECT * FROM rutas;
 ```
 <img width="446" height="171" alt="image" src="https://github.com/user-attachments/assets/62afe944-09f2-4ead-b005-cd94fd813dc6" />
+
 Por lo que ahora entraremos al navegador con esa ruta ```http://172.17.0.2/unprivate/secret/```
