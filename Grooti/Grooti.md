@@ -37,7 +37,7 @@ SELECT * FROM rutas;
 
 Por lo que ahora entraremos al navegador con esa ruta ```http://172.17.0.2/unprivate/secret/```
 
-## Paso N4: Usando burpsuite
+## Paso N4: Interceptando peticiones con burpsuite
 <img width="566" height="476" alt="image" src="https://github.com/user-attachments/assets/2e2867f1-c0b1-4122-99c1-e2e56a68ca40" />
 
 Dentro de la página, veremos un formulario el cual pide un texto y un número del 1 al 100, si ponemos un número equivocado, nos descargará un ```.txt``` sin relevancia, por lo que tendremos que buscar el número correcto y para facilitar el trabajo usaremos burpsuite.
@@ -50,6 +50,22 @@ En la ultima línea ```content=test&number=1``` subrayaremos el '1' y le daremos
 Luego, configuraremos el payload en tipo ```Number``` con con rango de numeros secuencial, del 1 al 100, 1 por 1, las configuraciones se verán visualmente en la siguiente imagen.
 <img width="1333" height="475" alt="image" src="https://github.com/user-attachments/assets/5d07afea-4aee-4eee-aa54-8f61a89782bd" />
 
-Luego de configurar todo, empezaremos el ataque. Una vez terminado, veremos que el número 16 tiene mas caracteres que los demas, por lo que ahora, volveremos a la página y descargaremos el archivo correspondiente al numero 16
+Luego de configurar todo, empezaremos el ataque. Una vez terminado, veremos que el número 16 tiene mas caracteres que los demas, por lo que ahora, volveremos a la página y descargaremos el archivo correspondiente al numero 16, el cual es ```password16.zip```
+
+## Paso N5: Fuerza bruta con john
+Ya que tenemos un ```.zip``` que al descomprimirlo pide contraseña, le aplicaremos fuerza bruta.
+Como ```john``` no puede leer archivos comprimidos, usaremos ```zip2john``` para pasarlo a un formato legible por john
+```
+zip2john password16.zip > hash.txt
+```
+Luego, usamos una john para hacerle fuerza bruta a la contraseña 
+```
+john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
+```
+Y luego visualizamos la contraseña de ```password16.zip```
+```
+john --show hash.txt
+```
+y vemos que la contraseña es 
 
 
