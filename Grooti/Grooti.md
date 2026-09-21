@@ -66,6 +66,7 @@ Y luego visualizamos la contraseña de ```password16.zip```
 ```
 john --show hash.txt
 ```
-y vemos que la contraseña es 
+y vemos que la contraseña es ```password1```
+<img width="668" height="379" alt="image" src="https://github.com/user-attachments/assets/8106879b-ab50-410b-ae20-d4853ce8f147" />
 
 
