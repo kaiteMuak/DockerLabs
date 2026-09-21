@@ -34,21 +34,4 @@ SHOW TABLES;
 SELECT * FROM rutas;
 ```
 <img width="446" height="171" alt="image" src="https://github.com/user-attachments/assets/62afe944-09f2-4ead-b005-cd94fd813dc6" />
-
-
-
-raw
-```
-nmap 172.17.0.2 -sS -sVC -n -Pn -p- --open --min-rate 5000 -oG open_ports
-gobuster dir -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -u http://172.17.0.2/ -x php,html
-mysql -u rocket -p -h 172.17.0.2 --ssl=0
-
-
---- SQL ---
-SHOW DATABASES;
-USE files_secret
-SHOW TABLES;
-SELECT * FROM rutas;
-
-
-```
+Por lo que ahora entraremos al navegador con esa ruta ```http://172.17.0.2/unprivate/secret/```
