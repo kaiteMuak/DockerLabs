@@ -45,7 +45,7 @@ Dentro de la página, veremos un formulario el cual pide un texto y un número d
 <img width="536" height="269" alt="image" src="https://github.com/user-attachments/assets/cda06d35-a237-44ee-a4a1-e2d1e05fd438" />
 
 Una vez interceptada la petición con burpsuite, mandaremos la información al ```intruder``` desde el ```http history```.
-En la ultima línea ```content=test&number=1``` subrayaremos el '1' y le daremos al boton ```Add $```, quedando así ```content=test&number=§1§```.
+En la ultima línea ```content=test&number=1``` subrayaremos el '1' y le daremos al boton ```Add §```, quedando así ```content=test&number=§1§```.
 
 Luego, configuraremos el payload en tipo ```Number``` con con rango de numeros secuencial, del 1 al 100, 1 por 1, las configuraciones se verán visualmente en la siguiente imagen.
 <img width="1333" height="475" alt="image" src="https://github.com/user-attachments/assets/5d07afea-4aee-4eee-aa54-8f61a89782bd" />
@@ -80,7 +80,7 @@ hydra -l grooti -P password16.txt ssh://172.17.0.2
 
 Vemos que la contraseña para el usuario ```grooti``` es ```YoSoYgRoOt```, por lo que ahora con la credenciales obtenidas podemos entrar al servidor ssh ```ssh grooti@172.17.0.2```
 
-## Paso N7: Escalando privilegios privilegios
+## Paso N7: Escalando privilegios
 Viendo la programación de crontab con ```crontab -l 2>/dev/null``` vemos que se está ejecutando un script en ```/opt/cleanup.sh```, el cual tiene de contenido: 
 
 <img width="357" height="92" alt="image" src="https://github.com/user-attachments/assets/6a4760f1-5f34-4f02-b7f4-a95fa5ffc802" />
