@@ -81,4 +81,4 @@ hydra -l grooti -P password16.txt ssh://172.17.0.2
 Vemos que la contraseña para el usuario ```grooti``` es ```YoSoYgRoOt```, por lo que ahora con la credenciales obtenidas podemos entrar al servidor ssh ```ssh grooti@172.17.0.2```
 
 ## Paso N7: Escalando privilegios privilegios
-Viendo la programación de crontab con ```crontab -l 2>/dev/null``` vemos que se está ejecutando un script en /opt/cleanup.sh
+Viendo la programación de crontab con ```crontab -l 2>/dev/null``` vemos que se está ejecutando un script en ```/opt/cleanup.sh```
