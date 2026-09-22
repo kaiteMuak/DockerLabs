@@ -2,6 +2,7 @@
 
 ## Resumen
 Grooti nos presenta una máquina la cual tendremos que acceder al interprete de su base de datos para sacar información, haremos fuerza bruta a un formulario de la página mediante burpsuite y crearemos un script malicioso para subir de privilegios.
+![Grooti cert](images/Grooti.webp)
 
 ## Paso N1: Reconocimiento
 Empezamos escaneando los puertos TCP abiertos en la máquina con sus respectivos servicios y versiones:
