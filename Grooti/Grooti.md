@@ -48,7 +48,7 @@ Una vez interceptada la petición con burpsuite, mandaremos la información al `
 En la ultima línea ```content=test&number=1``` subrayaremos el '1' y le daremos al boton ```Add §```, quedando así ```content=test&number=§1§```.
 
 Luego, configuraremos el payload en tipo ```Number``` con con rango de numeros secuencial, del 1 al 100, 1 por 1, las configuraciones se verán visualmente en la siguiente imagen.
-<img width="1333" height="475" alt="image" src="https://github.com/user-attachments/assets/5d07afea-4aee-4eee-aa54-8f61a89782bd" />
+![burpsuit payload](images/burpsuite.jpeg)
 
 Luego de configurar todo, empezaremos el ataque. Una vez terminado, veremos que el número 16 tiene mas caracteres que los demas, por lo que ahora, volveremos a la página y descargaremos el archivo correspondiente al numero 16, el cual es ```password16.zip```
 
