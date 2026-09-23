@@ -33,7 +33,7 @@ Al entrar a ```/file_upload.php```
 
 Podemos ver que que nos deja subir un archivo, por lo que pasaremos a explotar esta función.
 
-## Paso N3: Ejecutando código
+## Paso N3: Entendiendo el problema
 La idea es hacer que la página ejecute código php para desde ahí poder trabajar, por lo que creamos el script malicioso:
 ```
 echo '<?php        
@@ -48,6 +48,10 @@ if(isset($_GET['cmd'])) {
 ```
 Si lo intentamos subir, nos dirá ```No se ha cargado ningun archivo o hubo un error.```
 
-Es probable que lo que esté fallando sea la extensión, por lo que intentaremos interceptar la petición y hacerle fuerza bruta a las extensiones a ver cuál de todas nos permite subirla correctamente.
+Es probable que lo que esté fallando sea la extensión, por lo que intentaremos interceptar la petición y hacerle fuerza bruta a las extensiones a ver cual de todas nos permite subirla correctamente.
+
+## Paso N4: Interceptando la petición
+Entraremos a burpsuite en modo escucha e interceptaremos la petición que hicimos subiendo ```script.php``` 
+<img width="1366" height="275" alt="image" src="https://github.com/user-attachments/assets/9fd98ef1-97d8-4da9-b1ea-41f6ac7a5b32" />
 
 
