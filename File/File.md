@@ -21,13 +21,15 @@ gobuster dir -u http://172.17.0.2 -w /usr/share/wordlists/seclists/Discovery/Web
 ```
 <img width="665" height="538" alt="image" src="https://github.com/user-attachments/assets/33f79738-6930-404a-8232-a3b79d8227e1" />
 
-Vemos que tenemos los subdirectorios ```/uploads/``` y ```file_upload.php``` disponibles.
+Vemos que tenemos los subdirectorios ```/uploads/``` y ```/file_upload.php/``` disponibles.
 
+Al entrar a ```/uploads/``` podemos ver que es un **Directory Listing**
+<img width="520" height="196" alt="image" src="https://github.com/user-attachments/assets/251d4842-d4ee-4a09-9244-5e9a007250c0" />
 
+No hay mucho que hacer aqui.
 
-raw
-```
-gobuster dir -u http://172.17.0.2 -w /usr/share/wordlists/seclists/Discovery/Web-Content/DirBuster-2007_directory-list-2.3-medium.txt -x txt,php,html
+Al entrar a ```/file_upload.php/```
+<img width="673" height="128" alt="image" src="https://github.com/user-attachments/assets/fa98bbc6-3830-4a65-af8b-2327c4512330" />
 
+Podemos ver que que nos deja subir un archivo, por lo que pasaremos a explotarlo.
 
-```
