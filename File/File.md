@@ -48,3 +48,6 @@ if(isset($_GET['cmd'])) {
 ```
 Si lo intentamos subir, nos dirá ```No se ha cargado ningun archivo o hubo un error.```
 
+Es probable que lo que esté fallando sea la extensión, por lo que intentaremos interceptar la petición y hacerle fuerza bruta a las extensiones a ver cuál de todas nos permite subirla correctamente.
+
+
