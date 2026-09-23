@@ -56,5 +56,6 @@ Entraremos a burpsuite en modo escucha e interceptaremos la petición que hicimo
 
 Agregaremos los ```§§``` al ```.php```, quedando ```§.php§```. Configuraremos el payload en **Simple list** y buscaremos alguna wordlist de extensiones, en este caso, usaré ```/usr/share/seclists/Discovery/Web-Content/web-extensions.txt``` y la desactivaremos la URL-encode (final del todo en el apartado de payloads)
 <img width="1366" height="553" alt="image" src="https://github.com/user-attachments/assets/28af56e1-3903-4bd8-b7ec-517bdd87a1a8" />
-<img width="390" height="116" alt="image" src="https://github.com/user-attachments/assets/7ea901a8-ffcb-47d2-94c2-3d62adb48066" />
+<img width="393" height="115" alt="image" src="https://github.com/user-attachments/assets/5d879d8c-6093-4a9b-9cad-0fbba995f639" />
+
 
