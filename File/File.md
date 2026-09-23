@@ -19,6 +19,8 @@ Ya que no hay información relevante en el servidor ftp, empezaremos la busqueda
 ```
 gobuster dir -u http://172.17.0.2 -w /usr/share/wordlists/seclists/Discovery/Web-Content/DirBuster-2007_directory-list-2.3-medium.txt -x txt,php,html
 ```
+<img width="665" height="538" alt="image" src="https://github.com/user-attachments/assets/33f79738-6930-404a-8232-a3b79d8227e1" />
+
 Vemos que tenemos los subdirectorios ```/uploads/``` y ```file_upload.php``` disponibles.
 
 
