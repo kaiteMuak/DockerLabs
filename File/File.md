@@ -58,4 +58,8 @@ Agregaremos los ```§§``` al ```.php```, quedando ```§.php§```. Configuraremo
 <img width="1366" height="553" alt="image" src="https://github.com/user-attachments/assets/28af56e1-3903-4bd8-b7ec-517bdd87a1a8" />
 <img width="393" height="115" alt="image" src="https://github.com/user-attachments/assets/5d879d8c-6093-4a9b-9cad-0fbba995f639" />
 
+Y empezaremos el ataque. Podemos notar que la extension ```.phar``` tiene más tamaño que las demás extensiones, por lo que si entramos y vemos la respuesta, veremos que el archivo se subió correctamente
+<img width="579" height="357" alt="image" src="https://github.com/user-attachments/assets/422cede5-36d2-4bb6-8704-394e36eaf749" />
+
+
 
