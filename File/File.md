@@ -51,7 +51,8 @@ Si lo intentamos subir, nos dirá ```No se ha cargado ningun archivo o hubo un e
 Es probable que lo que esté fallando sea la extensión, por lo que intentaremos interceptar la petición y hacerle fuerza bruta a las extensiones a ver cual de todas nos permite subirla correctamente.
 
 ## Paso N4: Interceptando la petición
-Entraremos a burpsuite en modo escucha e interceptaremos la petición que hicimos subiendo ```script.php``` 
+Entraremos a burpsuite en modo escucha e interceptaremos la petición que hicimos subiendo ```script.php``` y lo enviaremos al intruder
 <img width="1366" height="275" alt="image" src="https://github.com/user-attachments/assets/9fd98ef1-97d8-4da9-b1ea-41f6ac7a5b32" />
 
+Agregaremos los ```§§``` al ```.php```, quedando ```§.php§```. Buscaremos alguna wordlists de extensiones, en este caso, usare ```/usr/share/seclists/Discovery/Web-Content/web.extensions.txt```
 
