@@ -2,6 +2,7 @@
 
 ## Resumen
 File nos presenta una máquina en la cual tendremos que usar burpsuite para interceptar una petición y ajustarla de acuerdo a los filtros para luego realizar una reverse shell, dentro del sistema iremos saltando de usuarios hasta aplicar un **Python Library Hijacking** y escalar a usuarios root.
+![cert](images/file.webp)
 
 ## Paso N1: Reconocimiento
 Empezaremos escaneando los puertos TCP abiertos en la máquina con sus respectivos servicios y versiones
