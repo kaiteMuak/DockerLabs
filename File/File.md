@@ -160,5 +160,13 @@ Una vez ya como usuario iker, podemos ejecutar ```sudo -l```
 ```
 (ALL) NOPASSWD: /usr/bin/python3 /home/iker/geo_ip.py
 ```
-podemos ver que en el directorio ```/home/iker/``` hay un script de python el cual 
+podemos ver que en el directorio ```/home/iker/``` hay un script de python el cual tiene la declaración
+```
+import requests;
+```
+<img width="545" height="132" alt="image" src="https://github.com/user-attachments/assets/8c7c77f4-3753-455c-a05e-fa33bc69651b" />
 
+Por lo que podemos hacer **Python library hijacking**. 
+```
+echo 
+```
