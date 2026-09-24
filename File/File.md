@@ -156,7 +156,7 @@ sudo -u iker env /bin/sh -p
 ```
 y accedemos al usuario iker.
 
-## Paso N10: escalando privilegios
+## Paso N10: Escalando privilegios
 Una vez ya como usuario iker, podemos ejecutar ```sudo -l```
 ![](images/img20.png)
 ```
