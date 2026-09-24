@@ -61,5 +61,14 @@ Agregaremos los ```§§``` al ```.php```, quedando ```§.php§```. Configuraremo
 Y empezaremos el ataque. Podemos notar que la extension ```.phar``` tiene más tamaño que las demás extensiones, por lo que si entramos y vemos la respuesta, veremos que el archivo se subió correctamente
 <img width="579" height="357" alt="image" src="https://github.com/user-attachments/assets/422cede5-36d2-4bb6-8704-394e36eaf749" />
 
+## Paso N5: Generando reverse shell
+Una vez subido el archivo, veremos que se verá reflejado en el **Directory Listing** ```/uploads/```
+<img width="542" height="215" alt="image" src="https://github.com/user-attachments/assets/173bd6ec-d73f-49e3-aa2e-f92fbfae5123" />
+
+Entraremos al archivo y veremos que tenemos un input para poder colocar comandos. por lo que ahora, escuchando en una terminal con ```nc -lvnp 443``` ejecutaremos la reverse shell de la siguiente manera:
+```
+
+```
+
 
 
