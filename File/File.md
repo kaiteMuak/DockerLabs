@@ -121,3 +121,5 @@ wget http://172.17.0.2:8000/dragon-medieval.jpeg
 y una vez la tengamos en n uestra máquina, usaremos ```stegcracker```
 <img width="665" height="305" alt="image" src="https://github.com/user-attachments/assets/6b9a639b-4e88-4589-87b5-99d567f45013" />
 
+Esto nos dejará ```dragon-medieval.jpeg.out``` el cual tiene un hash, cual contenido es:
+
