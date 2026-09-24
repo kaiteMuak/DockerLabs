@@ -54,7 +54,7 @@ Es probable que lo que esté fallando sea la extensión, por lo que intentaremos
 Entraremos a burpsuite en modo escucha e interceptaremos la petición que hicimos subiendo ```script.php``` y lo enviaremos al intruder
 <img width="1366" height="275" alt="image" src="https://github.com/user-attachments/assets/9fd98ef1-97d8-4da9-b1ea-41f6ac7a5b32" />
 
-Agregaremos los ```§§``` al ```.php```, quedando ```§.php§```. Configuraremos el payload en **Simple list** y buscaremos alguna wordlist de extensiones, en este caso, usaré ```/usr/share/seclists/Discovery/Web-Content/web-extensions.txt``` y la desactivaremos la URL-encode (final del todo en el apartado de payloads)
+Agregaremos los ```§§``` al ```.php```, quedando ```§.php§```. Configuraremos el payload en **Simple list** y buscaremos alguna wordlist de extensiones, en este caso, usaré ```/usr/share/seclists/Discovery/Web-Content/web-extensions.txt``` y desactivaremos el URL-encode (final del todo en el apartado de payloads)
 <img width="1366" height="553" alt="image" src="https://github.com/user-attachments/assets/28af56e1-3903-4bd8-b7ec-517bdd87a1a8" />
 <img width="393" height="115" alt="image" src="https://github.com/user-attachments/assets/5d879d8c-6093-4a9b-9cad-0fbba995f639" />
 
