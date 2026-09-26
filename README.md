@@ -11,3 +11,4 @@
 8. [PkgPoison](/PkgPoison/PkgPoison.md) - SSH Bruteforce | Compiled Python Extraction | Pip Package Abuse
 9. [Grooti](/Grooti/Grooti.md) - MySQL Enumeration | Burp Intruder | Nested Zip Cracking | Cron Job Abuse
 10. [File](/File/File.md) - Burp Intruder | Local Bruteforce | Steganography | GTFOBins Chain | Python Library Hijacking
+11. [galeria](/galeria/galeria.md) - File Upload RCE | GTFOBins (nano) | PATH Hijacking
