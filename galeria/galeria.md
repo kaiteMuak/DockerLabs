@@ -1,6 +1,7 @@
 # galeria - Writeup
 
 ## Resumen
+galeria nos presenta una máquina la cual introduciremos un script malicioso mediante un file uploader, explotaremos binarios SUID y haremos uso del **PATH Hijacking**
 
 ## Paso N1: Reconocimiento
 Empezamos escaneando los puertos TCP disponibles con sus respectivos servicios y versiones
