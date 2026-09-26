@@ -10,7 +10,7 @@ nmap 172.17.0.2 -sS -sVC -n -Pn -p- --open --min-rate 5000 -oG open_ports
 ```
 <img width="671" height="539" alt="image" src="https://github.com/user-attachments/assets/447475d5-e276-4272-9aa4-86ea6ed82a6d" />
 
-Veremos que están abiertos los puertos 21 y 80 correspondientes respectivamente a ftp y ssh
+Veremos que están abiertos los puertos 21 y 80 correspondientes a ftp y http respectivamente.
 **Nota del creador:** En esta máquina personalmente no hago uso del servidor ftp, pero es recomendable entrar y experimentar para desarrollar lógica y criterio propio.
 
 ## Paso N2: Búsqueda de subdirectorios
