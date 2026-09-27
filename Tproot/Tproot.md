@@ -12,4 +12,9 @@ nmap 172.17.0.2 -sS -sVC -n -Pn -p- --open --min-rate 5000 -oG open_ports
 
 Podemos ver en pantalla que están abiertos los puertos 21 y 80 correspondientes a ftp y http respectivamente. Podemos ver que el servidor ftp está usando ```vsftpd 2.3.4```, una versión un poco antigua que tiene cierta vulnerabilidad.
 
-## Paso N2:
+## Paso N2: Intrusion medianto vsftpd 2.3.4
+Investigando un poco, podemos concluir que para explotar el `vsftpd 2.3.4` tenemos que poner una carita feliz `:)` en el nombre, una vez ingresada las credenciales, a pesar de ser incorrectas se abrirá el puerto 6200. Para esta máquina usaré el usuario `kaite:)`
+<img width="670" height="534" alt="image" src="https://github.com/user-attachments/assets/d1994bd8-fff9-4c61-8b93-33efd17f49e2" />
+
+## Paso N3: 
+
