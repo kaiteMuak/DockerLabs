@@ -14,7 +14,13 @@ Podemos ver en pantalla que están abiertos los puertos 21 y 80 correspondientes
 
 ## Paso N2: Intrusion medianto vsftpd 2.3.4
 Investigando un poco, podemos concluir que para explotar el `vsftpd 2.3.4` tenemos que poner una carita feliz `:)` en el nombre, una vez ingresada las credenciales, a pesar de ser incorrectas se abrirá el puerto 6200. Para esta máquina usaré el usuario `kaite:)`
-<img width="670" height="534" alt="image" src="https://github.com/user-attachments/assets/d1994bd8-fff9-4c61-8b93-33efd17f49e2" />
+<img width="354" height="138" alt="image" src="https://github.com/user-attachments/assets/4b8faa6c-b669-4b1f-b2d2-8249efa1e835" />
+
+Sin salirnos, entramos al puerto 6200 desde otra terminal con `nc 172.17.0.2 6200` y habremos entrado al sistema como usuarios root.
+
+<img width="363" height="113" alt="image" src="https://github.com/user-attachments/assets/957dd17e-3cc8-480a-9d91-8291e47b2b17" />
+
+
 
 ## Paso N3: 
 
