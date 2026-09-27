@@ -1,7 +1,7 @@
 # Tproot - Writeup
 
 ## Resumen
-Lorem Ipsum
+Explotación de la vulnerabilidad vsftpd 2.3.4 
 
 ## Paso N1: Reconocimiento
 Empezaremos escaneando los puertos TCP abiertos de la maquina victima con sus respectivos servicios y versiones
@@ -21,6 +21,4 @@ Sin salirnos, entramos al puerto 6200 desde otra terminal con `nc 172.17.0.2 620
 <img width="363" height="113" alt="image" src="https://github.com/user-attachments/assets/957dd17e-3cc8-480a-9d91-8291e47b2b17" />
 
 
-
-## Paso N3: 
 
