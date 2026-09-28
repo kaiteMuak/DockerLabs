@@ -1,7 +1,7 @@
 # Tproot - Writeup
 
 ## Resumen
-Explotación de la vulnerabilidad vsftpd 2.3.4 
+reconocimiento de puertos TCP por medio de nmap junto a explotación de la vulnerabilidad vsftpd 2.3.4 
 
 ## Paso N1: Reconocimiento
 Empezaremos escaneando los puertos TCP abiertos de la maquina victima con sus respectivos servicios y versiones
@@ -16,7 +16,7 @@ Podemos ver en pantalla que están abiertos los puertos 21 y 80 correspondientes
 Investigando un poco, podemos concluir que para explotar el `vsftpd 2.3.4` tenemos que poner una carita feliz `:)` en el nombre, una vez ingresada las credenciales, a pesar de ser incorrectas se abrirá el puerto 6200. Para esta máquina usaré el usuario `kaite:)`
 ![](images/img2.png)
 
-Sin salirnos, entramos al puerto 6200 desde otra terminal con `nc 172.17.0.2 6200` y habremos entrado al sistema como usuarios root.
+Sin salirnos, entramos al puerto 6200 desde otra terminal con `nc 172.17.0.2 6200` y habremos realizado una **reverse shell** entrando al sistema como usuarios root.
 
 ![](images/img3.png)
 
