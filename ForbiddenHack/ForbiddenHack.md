@@ -31,17 +31,10 @@ wfuzz -c -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt -
 Encontramos que el parámetro vulnerable es `pages`, por lo que ahora podremos pasarlo a **Burpsuite** e interceptar la petición.
 
 ## Paso N4: Interceptando la petición
-Entraremos a **Burpsuite** y mandamos la petición al **Repeater**, agregando nuevamente la cabecera `Referer: http://bypass403.pw`
+Entraremos a **Burpsuite** y mandamos la petición al **Repeater**, agregando nuevamente la cabecera `Referer: http://bypass403.pw` y probando el parámetro `pages`
+<img width="1038" height="410" alt="image" src="https://github.com/user-attachments/assets/7fa76724-4431-4055-888f-04b3a16e192f" />
+
+Vemos que funciona correctamente.
 
 
 
-
-
-
-
-```
-nmap 172.17.0.2 -sS -sVC -n -Pn -p- --open --min-rate 5000 -oG open_ports
- wfuzz -c -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt --hl 38 -u http://bypass403.pw/index.php?FUZZ=test -H "Referer: http://bypass403.pw"
-
-
-```
