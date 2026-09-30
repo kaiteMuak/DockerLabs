@@ -8,7 +8,7 @@ Empezaremos escaneando los puertos TCP abiertos en la máquina con sus respectiv
 ```
 nmap 172.17.0.2 -sS -sVC -n -Pn -p- --open --min-rate 5000 -oG open_ports
 ```
-<img width="663" height="312" alt="image" src="https://github.com/user-attachments/assets/b5b04de5-719e-490f-aab8-0fb0876c7567" />
+![](images/img1.png)
 
 Veremos que únicamente está abierto el puerto 80, por lo que tendremos que examinar la página.
 
