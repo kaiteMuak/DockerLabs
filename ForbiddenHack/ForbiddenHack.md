@@ -75,11 +75,27 @@ Una vez ya en el usuario `bambi` ejecutaremos `sudo -l`
 ```
 (ALL : ALL) NOPASSWD: /usr/bin/furb
 ```
-si aplicamos `strings /usr/bin/furb` y encontraremos una línea que dice `Error: Missing file argument for -r`, por lo que vemos que podemos usar el parámetro `-r` en furb. si ejecutamos `ls -la /usr/bin/furb` veremos que tiene permisos root, por lo que si ejecutamos
+si aplicamos `strings /usr/bin/furb` encontraremos una línea que dice `Error: Missing file argument for -r`, por lo que vemos que podemos usar el parámetro `-r` en furb. si ejecutamos `ls -la /usr/bin/furb` veremos que tiene permisos root. Buscaremos archivos que tengan de nombre `furb` para buscar alguna pista con el siguiente comando
 ```
-sudo -u root /usr/bin/furb -r /etc/shadow
+find / -name '*furb*' 2>/dev/null
 ```
-<img width="669" height="381" alt="image" src="https://github.com/user-attachments/assets/1acd90cc-4d03-43d6-8fa3-60d637daa6bf" />
+<img width="577" height="87" alt="image" src="https://github.com/user-attachments/assets/8ebc07f4-266c-4070-be48-d6b6ea4f301b" />
+
+Encontramos `/var/backups/furbRead.txt` y si le hacemos un cat nos mostrará el siguiente texto: `Interesante este nombre de archivo, donde mas puede encontrarse?`. con todas estas pistas, el parámetro `-r` sugiere que podemos leer archivos, por lo que ejecutamos
 ```
-root:$y$j9T$djr/6OzFs5YQBGkXwyusg0$OJCmQMUtPM.g1Jw/6wVW9ZSEgHfnZq5EW6mPRygleO/:20249:0:99999:7:::
+sudo /usr/bin/furb -r /etc/shadow
 ```
+y efectivamente funciona.
+
+El contenido del archivo nos incita a explorar y probar en el sistema, pero sabemos que está en un directorio que no podemos leer, pues sino, se nos hubiera listado al momento de haber buscado archivos con el nombre furb, por lo que probamos a leer el archivo en `/root`
+```
+sudo /usr/bin/furb -r /root/furbRead.txt
+```
+<img width="643" height="72" alt="image" src="https://github.com/user-attachments/assets/069ec5ab-aea0-4ba5-80e3-6068cfa9fea1" />
+
+Y encontramos `StrongPasswordRootSuperSecret123`, por lo que trataremos de usar dicha contraseña con `su root` y habremos ganado acceso.
+<img width="638" height="147" alt="image" src="https://github.com/user-attachments/assets/4bcab137-612f-430c-bb5d-f7179a1d41c9" />
+
+
+
+
