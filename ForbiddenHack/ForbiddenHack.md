@@ -92,6 +92,7 @@ El contenido del archivo nos incita a explorar y probar en el sistema, pero sabe
 ```
 sudo /usr/bin/furb -r /root/furbRead.txt
 ```
+
 ![](images/img12.png)
 
 Y encontramos `StrongPasswordRootSuperSecret123`, por lo que trataremos de usar dicha contraseña con `su root` y habremos ganado acceso.
