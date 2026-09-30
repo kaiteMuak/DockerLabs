@@ -56,9 +56,17 @@ Pero de primeras no nos dejará, tenemos que codearlo a url, por lo que si dejam
 ## Paso N6: Accediendo a usuarios
 Empezaremos estabilizando la shell con
 ```
-
-
+script /dev/null -c bash
+Ctrl+Z
+stty raw -echo; fg
+export TERM=xterm
+export SHELL=bash
 ```
-
+Luego, en el directorio `/home` veremos que hay un usuario llamado `bambi` y dentro de su directorio habra un directorio oculto llamado `.secret` el cual tiene el siguiente contenido
+<img width="641" height="111" alt="image" src="https://github.com/user-attachments/assets/569041ee-c971-4d04-b8ee-caaef7b4026e" />
+```
+bambi:c3VwZXJzZWNyZXRwYXNzd29yZDEyMw
+```
+al deshashearlo tenemos que la contraseña para bambi es `supersecretpassword123` por lo que ya podremos acceder
 
 
