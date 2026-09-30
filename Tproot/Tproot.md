@@ -2,6 +2,7 @@
 
 ## Resumen
 reconocimiento de puertos TCP por medio de nmap junto a explotación de la vulnerabilidad vsftpd 2.3.4 
+![](images/tproot.webp)
 
 ## Paso N1: Reconocimiento
 Empezaremos escaneando los puertos TCP abiertos de la maquina victima con sus respectivos servicios y versiones
