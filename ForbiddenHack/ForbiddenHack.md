@@ -17,6 +17,7 @@ Al entrar a la página, veremos que es la página default de Apache2 y veremos e
 ![](images/img2.png)
 
 Lo que nos dice que internamente el servidor tiene la ruta `bypass403.pw`, por lo que reconfiguraremos los hosts usando `sudo nano /etc/hosts` `172.17.0.2 bypass403.pw`
+
 ![](images/img3.png)
 
 Una vez dentro, veremos que no tenemos acceso a la página.
