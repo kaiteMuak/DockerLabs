@@ -2,6 +2,7 @@
 
 ## Resumen
 En esta máquina haremos fuzzing a parámetros para poder aplicar un **LFI** y ejecutar código mediante un **PHP Wrapper**. Dentro del sistema, accederemos a usuarios y escalaremos privilegios gracias a un binario interno.
+![](images/forb.webp)
 
 ## Paso N1: Reconocimiento
 Empezaremos escaneando los puertos TCP abiertos en la máquina con sus respectivos servicios y versiones
