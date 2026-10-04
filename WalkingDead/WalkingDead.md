@@ -20,3 +20,5 @@ Una vez dentro de la página, si la inspeccionamos (o vemos su código fuente) e
 <img width="435" height="144" alt="image" src="https://github.com/user-attachments/assets/c48d4509-768e-4a8a-bdda-e463b5840977" />
 
 Dejándonos el subdirectorio oculto `/hidden/.shell.php`, y una vez dentro, veremos que no hay contenido alguno.
+
+## Paso N3: 
