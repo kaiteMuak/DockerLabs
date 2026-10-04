@@ -47,4 +47,5 @@ Veremos el binario `/usr/bin/python3.8`, que si buscamos en [GTFobins](https://g
 ```
 python3.8 -c 'import os; os.execl("/bin/sh", "sh", "-p")'
 ```
+Y una vez ejecutado habremos ganado acceso a usuario root
 ![](images/img6.png)
