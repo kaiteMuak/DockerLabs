@@ -16,3 +16,4 @@
 10. [File](/File/File.md) - Burp Intruder | Local Bruteforce | Steganography | GTFOBins Chain | Python Library Hijacking
 11. [galeria](/galeria/galeria.md) - File Upload RCE | GTFOBins (nano) | PATH Hijacking
 12. [ForbiddenHack](/ForbiddenHack/ForbiddenHack.md) - Referer Bypass | PHP Filter Chain RCE | Privilege Escalation via Custom Binary
+13. [Walking Dead](/WalkingDead/WalkingDead.md)  
